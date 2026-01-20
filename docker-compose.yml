@@ -1,4 +1,29 @@
 services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: telemetry-backend
+    hostname: backend
+    depends_on:
+      kafka:
+        condition: service_started
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      KAFKA_BROKERS: kafka:29092
+    networks:
+      - telemetry-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/telemetry/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
     hostname: zookeeper
@@ -11,6 +36,8 @@ services:
     volumes:
       - zookeeper-data:/var/lib/zookeeper/data
       - zookeeper-logs:/var/lib/zookeeper/log
+    networks:
+      - telemetry-network
 
   kafka:
     image: confluentinc/cp-kafka:7.5.0
@@ -32,6 +59,8 @@ services:
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
     volumes:
       - kafka-data:/var/lib/kafka/data
+    networks:
+      - telemetry-network
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -44,8 +73,14 @@ services:
       KAFKA_CLUSTERS_0_NAME: local
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
       KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+    networks:
+      - telemetry-network
 
 volumes:
   zookeeper-data:
   zookeeper-logs:
   kafka-data:
+
+networks:
+  telemetry-network:
+    driver: bridge
