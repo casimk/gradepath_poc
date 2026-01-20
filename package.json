@@ -1,0 +1,22 @@
+{
+  "name": "gradepath-user-telemetry-poc",
+  "version": "1.0.0",
+  "description": "User Telemetry Proof of Concept with React Native, NestJS, Kafka, and Docker",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend",
+    "packages/*"
+  ],
+  "scripts": {
+    "backend": "npm run start:dev -w backend",
+    "frontend": "npm run start -w frontend",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0"
+  }
+}

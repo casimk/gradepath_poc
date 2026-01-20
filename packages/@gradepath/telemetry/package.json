@@ -1,0 +1,70 @@
+{
+  "name": "@gradepath/telemetry",
+  "version": "1.0.0",
+  "description": "Multi-platform telemetry package for React Native, Web, and Electron",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./react-native": {
+      "types": "./dist/react-native.d.ts",
+      "default": "./dist/react-native.js"
+    },
+    "./web": {
+      "types": "./dist/web.d.ts",
+      "default": "./dist/web.js"
+    },
+    "./electron": {
+      "types": "./dist/electron.d.ts",
+      "default": "./dist/electron.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "keywords": [
+    "telemetry",
+    "analytics",
+    "react-native",
+    "react",
+    "electron",
+    "tracking",
+    "events"
+  ],
+  "author": "GradePath",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gradepath/telemetry"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "dependencies": {
+    "uuid": "^9.0.1"
+  },
+  "optionalDependencies": {
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "electron-store": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/react": ">=18.0.0",
+    "@types/uuid": "^9.0.7",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "desktop-app",
+  "version": "1.0.0",
+  "description": "Electron desktop app with telemetry",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev"
+  },
+  "dependencies": {
+    "@gradepath/telemetry": "file:../packages/@gradepath/telemetry",
+    "electron-store": "^8.1.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3"
+  }
+}
