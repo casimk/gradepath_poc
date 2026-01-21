@@ -70,6 +70,26 @@ export class AuthController {
     private readonly csrfService: CsrfService,
   ) {}
 
+  /**
+   * Check if OAuth provider is configured with credentials
+   */
+  private isOAuthConfigured(provider: string): boolean {
+    const providerUpper = provider.charAt(0).toUpperCase() + provider.slice(1).toLowerCase();
+
+    switch (providerUpper) {
+      case 'google':
+        return !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
+      case 'github':
+        return !!(process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET);
+      case 'apple':
+        return !!(process.env.APPLE_CLIENT_ID && process.env.APPLE_TEAM_ID && process.env.APPLE_KEY_ID);
+      case 'facebook':
+        return !!(process.env.FACEBOOK_APP_ID && process.env.FACEBOOK_APP_SECRET);
+      default:
+        return false;
+    }
+  }
+
   @Post('register')
   @HttpCode(HttpStatus.CREATED)
   @Throttle({ default: { limit: 3, ttl: 60000 } })
@@ -266,23 +286,35 @@ export class AuthController {
   }
 
   @Get('oauth/:provider')
-  @UseGuards(AuthGuard('google'))
-  async oauthLogin(@Param('provider') provider: string) {
-    // OAuth flow initiated by Passport
+  async oauthLogin(@Param('provider') provider: string, @Res() res: Response) {
+    // Check if OAuth is configured for this provider
+    const isConfigured = this.isOAuthConfigured(provider);
+
+    if (!isConfigured) {
+      return res.status(HttpStatus.SERVICE_UNAVAILABLE).json({
+        message: `${provider.charAt(0).toUpperCase() + provider.slice(1)} authentication is not configured. Please contact the administrator to set up OAuth credentials.`,
+        error: 'OAuth Not Configured',
+        statusCode: 503,
+      });
+    }
+
+    // OAuth flow would be initiated by Passport strategy here
+    // For now, return a message
+    return res.status(HttpStatus.NOT_IMPLEMENTED).json({
+      message: 'OAuth authentication is not yet fully implemented. Please use email/password login.',
+      error: 'Not Implemented',
+      statusCode: 501,
+    });
   }
 
   @Get('oauth/:provider/callback')
-  @UseGuards(AuthGuard('google'))
   async oauthCallback(
     @Param('provider') provider: string,
     @Req() req: Request,
     @Res() res: Response,
   ) {
-    const user = (req as any).user;
     const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:8083';
-
-    // Redirect to frontend with tokens
-    return res.redirect(`${frontendUrl}/auth/callback?token=${user.accessToken}`);
+    return res.redirect(`${frontendUrl}/login?error=oauth_not_configured`);
   }
 
   @Get('verify-email/:token')

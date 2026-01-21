@@ -106,8 +106,13 @@ class AuthService {
       (response: AxiosResponse) => response,
       async (error) => {
         const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
+        const url = originalRequest?.url || '';
 
-        if (error.response?.status === 401 && !originalRequest._retry) {
+        // Don't try to refresh tokens for login/register endpoints
+        // A 401 on these endpoints means wrong credentials, not expired token
+        const isAuthEndpoint = url.includes('/auth/login') || url.includes('/auth/register') || url.includes('/auth/refresh');
+
+        if (error.response?.status === 401 && !originalRequest._retry && !isAuthEndpoint) {
           originalRequest._retry = true;
 
           // If already refreshing, wait for that to complete
