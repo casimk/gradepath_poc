@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EngagementClassifier.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">content-service</a> &gt; <a href="index.source.html" class="el_package">com.gradepath.content.profiling.algorithm</a> &gt; <span class="el_source">EngagementClassifier.java</span></div><h1>EngagementClassifier.java</h1><pre class="source lang-java linenums">package com.gradepath.content.profiling.algorithm;
+
+import com.gradepath.content.recommendation.profile.BehavioralProfile;
+import com.gradepath.content.recommendation.profile.BehavioralProfile.EngagementPattern;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Classifies user engagement patterns based on session behavior.
+ * Ported from TypeScript EngagementClassifier.
+ *
+ * Classification categories:
+ * - binge_consumer: &gt;30 min sessions, &gt;10 content per session
+ * - casual_browser: &lt;10 min sessions, &lt;5 content per session
+ * - deep_learner: &gt;2 min per content (deep engagement)
+ * - explorer: &lt;30 sec per content (browsing mode)
+ * - specialist: low topic diversity, focused on specific subjects
+ */
+@Component
+<span class="fc" id="L26">@Slf4j</span>
+<span class="fc" id="L27">public class EngagementClassifier {</span>
+
+    // Track recent session metrics per user (LRU cache with max 10 entries per user)
+<span class="fc" id="L30">    private final Map&lt;String, List&lt;SessionMetrics&gt;&gt; recentSessions = new LinkedHashMap&lt;&gt;() {</span>
+        @Override
+        protected boolean removeEldestEntry(Map.Entry&lt;String, List&lt;SessionMetrics&gt;&gt; eldest) {
+            // Keep cache bounded - remove oldest entries when too many users
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">            return size() &gt; 1000;</span>
+        }
+    };
+
+    private static final int MAX_SESSIONS_PER_USER = 10;
+    private static final int MIN_SESSIONS_FOR_CLASSIFICATION = 3;
+
+    /**
+     * Update engagement based on session end event
+     */
+    public void updateEngagement(BehavioralProfile profile, SessionMetrics metrics) {
+<span class="fc" id="L45">        String userId = profile.getUserId();</span>
+
+        // Store session metrics
+<span class="fc" id="L48">        List&lt;SessionMetrics&gt; sessions = recentSessions.computeIfAbsent(</span>
+<span class="fc" id="L49">            userId, k -&gt; new ArrayList&lt;&gt;()</span>
+        );
+<span class="fc" id="L51">        sessions.add(metrics);</span>
+
+        // Keep only last N sessions
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        while (sessions.size() &gt; MAX_SESSIONS_PER_USER) {</span>
+<span class="nc" id="L55">            sessions.remove(0);</span>
+        }
+
+        // Update engagement pattern
+<span class="fc" id="L59">        EngagementPattern pattern = classifyEngagement(sessions);</span>
+<span class="fc" id="L60">        profile.setEngagement(pattern);</span>
+
+<span class="fc" id="L62">        log.debug(&quot;Updated engagement for user {}: classification={}, confidence={}&quot;,</span>
+<span class="fc" id="L63">            userId, pattern.getClassification(), pattern.getConfidence());</span>
+<span class="fc" id="L64">    }</span>
+
+    /**
+     * Classify engagement based on recent session metrics
+     */
+    private EngagementPattern classifyEngagement(List&lt;SessionMetrics&gt; sessions) {
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if (sessions.size() &lt; MIN_SESSIONS_FOR_CLASSIFICATION) {</span>
+<span class="fc" id="L71">            return EngagementPattern.builder()</span>
+<span class="fc" id="L72">                .classification(&quot;unknown&quot;)</span>
+<span class="fc" id="L73">                .confidence(0.0)</span>
+<span class="fc" id="L74">                .avgSessionDuration(0.0)</span>
+<span class="fc" id="L75">                .avgContentPerSession(0.0)</span>
+<span class="fc" id="L76">                .timePerContentRatio(0.0)</span>
+<span class="fc" id="L77">                .uniqueTopicRatio(0.0)</span>
+<span class="fc" id="L78">                .build();</span>
+        }
+
+        // Calculate averages
+<span class="nc" id="L82">        double avgDuration = sessions.stream()</span>
+<span class="nc" id="L83">            .mapToDouble(SessionMetrics::duration)</span>
+<span class="nc" id="L84">            .average()</span>
+<span class="nc" id="L85">            .orElse(0.0);</span>
+
+<span class="nc" id="L87">        double avgContent = sessions.stream()</span>
+<span class="nc" id="L88">            .mapToDouble(SessionMetrics::contentCount)</span>
+<span class="nc" id="L89">            .average()</span>
+<span class="nc" id="L90">            .orElse(0.0);</span>
+
+<span class="nc" id="L92">        double timePerContent = avgDuration / Math.max(avgContent, 1.0);</span>
+
+        // Classification rules based on TikTok-style patterns
+        String classification;
+        double confidence;
+
+<span class="nc bnc" id="L98" title="All 4 branches missed.">        if (avgDuration &gt; 1800 &amp;&amp; avgContent &gt; 10) {</span>
+            // &gt;30 min, &gt;10 content = binge consumer
+<span class="nc" id="L100">            classification = &quot;binge_consumer&quot;;</span>
+<span class="nc" id="L101">            confidence = 0.7;</span>
+<span class="nc bnc" id="L102" title="All 4 branches missed.">        } else if (avgDuration &lt; 600 &amp;&amp; avgContent &lt; 5) {</span>
+            // &lt;10 min, &lt;5 content = casual browser
+<span class="nc" id="L104">            classification = &quot;casual_browser&quot;;</span>
+<span class="nc" id="L105">            confidence = 0.7;</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">        } else if (timePerContent &gt; 120) {</span>
+            // &gt;2 min per content = deep learner
+<span class="nc" id="L108">            classification = &quot;deep_learner&quot;;</span>
+<span class="nc" id="L109">            confidence = 0.75;</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        } else if (timePerContent &lt; 30) {</span>
+            // &lt;30 sec per content = explorer
+<span class="nc" id="L112">            classification = &quot;explorer&quot;;</span>
+<span class="nc" id="L113">            confidence = 0.65;</span>
+        } else {
+            // Moderate behavior
+<span class="nc" id="L116">            classification = &quot;casual_browser&quot;;</span>
+<span class="nc" id="L117">            confidence = 0.5;</span>
+        }
+
+<span class="nc" id="L120">        return EngagementPattern.builder()</span>
+<span class="nc" id="L121">            .classification(classification)</span>
+<span class="nc" id="L122">            .confidence(confidence)</span>
+<span class="nc" id="L123">            .avgSessionDuration(avgDuration)</span>
+<span class="nc" id="L124">            .avgContentPerSession(avgContent)</span>
+<span class="nc" id="L125">            .timePerContentRatio(timePerContent)</span>
+<span class="nc" id="L126">            .uniqueTopicRatio(0.0) // Will be updated by JourneyAnalyzer</span>
+<span class="nc" id="L127">            .build();</span>
+    }
+
+    /**
+     * Update classification based on topic diversity (called by JourneyAnalyzer)
+     */
+    public void updateBasedOnTopicDiversity(BehavioralProfile profile, double uniqueTopicRatio) {
+<span class="nc" id="L134">        EngagementPattern engagement = profile.getEngagement();</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        if (engagement == null) {</span>
+<span class="nc" id="L136">            return;</span>
+        }
+
+<span class="nc" id="L139">        engagement.setUniqueTopicRatio(uniqueTopicRatio);</span>
+
+        // Re-classify based on topic diversity
+<span class="nc bnc" id="L142" title="All 2 branches missed.">        if (uniqueTopicRatio &gt; 0.6) {</span>
+<span class="nc" id="L143">            engagement.setClassification(&quot;explorer&quot;);</span>
+<span class="nc" id="L144">            engagement.setConfidence(Math.max(engagement.getConfidence(), 0.6));</span>
+<span class="nc bnc" id="L145" title="All 4 branches missed.">        } else if (uniqueTopicRatio &lt; 0.3 &amp;&amp; profile.getTotalContentConsumed() &gt; 10) {</span>
+<span class="nc" id="L146">            engagement.setClassification(&quot;specialist&quot;);</span>
+<span class="nc" id="L147">            engagement.setConfidence(Math.max(engagement.getConfidence(), 0.6));</span>
+        }
+<span class="nc" id="L149">    }</span>
+
+    /**
+     * Get stored session metrics for a user
+     */
+    public List&lt;SessionMetrics&gt; getUserSessions(String userId) {
+<span class="nc" id="L155">        return Collections.unmodifiableList(recentSessions.getOrDefault(userId, List.of()));</span>
+    }
+
+    /**
+     * Record for session metrics
+     */
+<span class="fc" id="L161">    public record SessionMetrics(</span>
+        double duration,      // Duration in seconds
+        int contentCount       // Number of content items consumed
+    ) {}
+
+    /**
+     * Record for raw session end events from NestJS
+     */
+<span class="nc" id="L169">    public record SessionEndEvent(</span>
+        String sessionId,
+        String userId,
+        Long startTime,
+        Long endTime,
+        Integer durationSeconds,
+        Integer contentCount,
+        String eventType
+    ) {}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

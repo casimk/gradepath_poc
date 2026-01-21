@@ -1,0 +1,7 @@
+/Users/qasim/Documents/Dev/GradePath_UserTelemetryPoC/content-service/src/test/java/com/gradepath/content/profiling/ProfilingServiceIntegrationTest.java
+/Users/qasim/Documents/Dev/GradePath_UserTelemetryPoC/content-service/src/test/java/com/gradepath/content/profiling/ProfilingServiceTest.java
+/Users/qasim/Documents/Dev/GradePath_UserTelemetryPoC/content-service/src/test/java/com/gradepath/content/profiling/algorithm/EngagementClassifierTest.java
+/Users/qasim/Documents/Dev/GradePath_UserTelemetryPoC/content-service/src/test/java/com/gradepath/content/profiling/algorithm/InterestScorerTest.java
+/Users/qasim/Documents/Dev/GradePath_UserTelemetryPoC/content-service/src/test/java/com/gradepath/content/profiling/algorithm/JourneyAnalyzerTest.java
+/Users/qasim/Documents/Dev/GradePath_UserTelemetryPoC/content-service/src/test/java/com/gradepath/content/recommendation/profile/BehavioralProfileServiceTest.java
+/Users/qasim/Documents/Dev/GradePath_UserTelemetryPoC/content-service/src/test/java/com/gradepath/content/recommendation/profile/BehavioralProfileTest.java

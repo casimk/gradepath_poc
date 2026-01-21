@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProfilingService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">content-service</a> &gt; <a href="index.source.html" class="el_package">com.gradepath.content.profiling</a> &gt; <span class="el_source">ProfilingService.java</span></div><h1>ProfilingService.java</h1><pre class="source lang-java linenums">package com.gradepath.content.profiling;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gradepath.content.profiling.algorithm.EngagementClassifier;
+import com.gradepath.content.profiling.algorithm.InterestScorer;
+import com.gradepath.content.profiling.algorithm.JourneyAnalyzer;
+import com.gradepath.content.recommendation.profile.BehavioralProfile;
+import com.gradepath.content.recommendation.profile.BehavioralProfileService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Behavioral Profiling Service
+ * Core business logic module that processes raw behavioral events from NestJS API Gateway.
+ *
+ * This service is part of the Spring Modulith core and handles CPU-intensive profiling work:
+ * - Interest scoring (graph algorithms)
+ * - Engagement classification (statistical analysis)
+ * - Journey analysis (Markov chains)
+ *
+ * Architecture:
+ * NestJS (I/O) → Kafka (raw-behavioral-events) → Java Profiling (CPU) → Database
+ */
+@Service
+<span class="fc" id="L33">@Slf4j</span>
+public class ProfilingService {
+
+    private final ObjectMapper objectMapper;
+    private final InterestScorer interestScorer;
+    private final EngagementClassifier engagementClassifier;
+    private final JourneyAnalyzer journeyAnalyzer;
+    private final BehavioralProfileService profileService;
+    private final KafkaTemplate&lt;String, Object&gt; kafkaTemplate;
+
+    // In-memory profile cache for real-time updates
+<span class="fc" id="L44">    private final Map&lt;String, BehavioralProfile&gt; profileCache = new HashMap&lt;&gt;();</span>
+
+    public ProfilingService(
+            ObjectMapper objectMapper,
+            InterestScorer interestScorer,
+            EngagementClassifier engagementClassifier,
+            JourneyAnalyzer journeyAnalyzer,
+            BehavioralProfileService profileService,
+<span class="fc" id="L52">            KafkaTemplate&lt;String, Object&gt; kafkaTemplate) {</span>
+<span class="fc" id="L53">        this.objectMapper = objectMapper;</span>
+<span class="fc" id="L54">        this.interestScorer = interestScorer;</span>
+<span class="fc" id="L55">        this.engagementClassifier = engagementClassifier;</span>
+<span class="fc" id="L56">        this.journeyAnalyzer = journeyAnalyzer;</span>
+<span class="fc" id="L57">        this.profileService = profileService;</span>
+<span class="fc" id="L58">        this.kafkaTemplate = kafkaTemplate;</span>
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * Consume raw behavioral events from NestJS API Gateway
+     * Topic: raw-behavioral-events
+     *
+     * Event types:
+     * - content_journey: User consumed a piece of content
+     * - session_lifecycle: User started/ended a session
+     */
+    @KafkaListener(
+        topics = &quot;raw-behavioral-events&quot;,
+        groupId = &quot;behavioral-profiling-consumer&quot;,
+        containerFactory = &quot;kafkaListenerContainerFactory&quot;
+    )
+    public void processRawBehavioralEvent(String message) {
+        try {
+<span class="fc" id="L76">            log.debug(&quot;Processing raw behavioral event: {}&quot;, message);</span>
+
+<span class="fc" id="L78">            JsonNode json = objectMapper.readTree(message);</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">            String topic = json.has(&quot;topic&quot;) ? json.get(&quot;topic&quot;).asText() : null;</span>
+
+<span class="fc bfc" id="L81" title="All 2 branches covered.">            if (topic == null) {</span>
+<span class="fc" id="L82">                log.warn(&quot;No topic in event: {}&quot;, message);</span>
+<span class="fc" id="L83">                return;</span>
+            }
+
+<span class="pc bpc" id="L86" title="1 of 3 branches missed.">            switch (topic) {</span>
+                case &quot;content_journey&quot; -&gt;
+<span class="fc" id="L88">                    processJourneyEvent(json);</span>
+                case &quot;session_lifecycle&quot; -&gt;
+<span class="fc" id="L90">                    processSessionEvent(json);</span>
+                default -&gt;
+<span class="nc" id="L92">                    log.warn(&quot;Unknown event topic: {}&quot;, topic);</span>
+            }
+
+<span class="fc" id="L95">        } catch (Exception e) {</span>
+<span class="fc" id="L96">            log.error(&quot;Error processing raw behavioral event: {}&quot;, message, e);</span>
+<span class="fc" id="L97">        }</span>
+<span class="fc" id="L98">    }</span>
+
+    /**
+     * Process content journey events
+     */
+    private void processJourneyEvent(JsonNode event) {
+<span class="fc" id="L104">        String userId = event.get(&quot;userId&quot;).asText();</span>
+
+        // Get or create profile
+<span class="fc" id="L107">        BehavioralProfile profile = getOrCreateProfile(userId);</span>
+
+        // Parse journey event
+<span class="fc" id="L110">        InterestScorer.RawJourneyEvent journeyEvent = parseJourneyEvent(event);</span>
+
+        // Update interest scores
+<span class="fc" id="L113">        interestScorer.updateInterests(profile, journeyEvent);</span>
+
+        // Analyze journey patterns
+<span class="fc" id="L116">        journeyAnalyzer.analyzeJourney(profile, journeyEvent);</span>
+
+        // Update content consumed count
+<span class="fc" id="L119">        profile.setTotalContentConsumed(profile.getTotalContentConsumed() + 1);</span>
+<span class="fc" id="L120">        profile.setTimestamp(Instant.now());</span>
+
+        // Save and emit
+<span class="fc" id="L123">        saveProfile(profile);</span>
+<span class="fc" id="L124">        emitProfileUpdate(profile);</span>
+
+<span class="fc" id="L126">        log.info(&quot;Processed journey event for user: {}, content: {}, action: {}&quot;,</span>
+<span class="fc" id="L127">            userId, journeyEvent.contentId(), journeyEvent.action());</span>
+<span class="fc" id="L128">    }</span>
+
+    /**
+     * Process session lifecycle events
+     */
+    private void processSessionEvent(JsonNode event) {
+<span class="fc" id="L134">        String userId = event.get(&quot;userId&quot;).asText();</span>
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">        String eventType = event.has(&quot;eventType&quot;) ? event.get(&quot;eventType&quot;).asText() : null;</span>
+
+<span class="pc bpc" id="L137" title="1 of 2 branches missed.">        if (!&quot;session_end&quot;.equals(eventType)) {</span>
+<span class="nc" id="L138">            return; // Only process session_end for engagement metrics</span>
+        }
+
+        // Get or create profile
+<span class="fc" id="L142">        BehavioralProfile profile = getOrCreateProfile(userId);</span>
+
+        // Parse session metrics
+<span class="pc bpc" id="L145" title="1 of 2 branches missed.">        int durationSeconds = event.has(&quot;durationSeconds&quot;)</span>
+<span class="fc" id="L146">            ? event.get(&quot;durationSeconds&quot;).asInt()</span>
+<span class="pc" id="L147">            : 0;</span>
+<span class="pc bpc" id="L148" title="1 of 2 branches missed.">        int contentCount = event.has(&quot;contentCount&quot;)</span>
+<span class="fc" id="L149">            ? event.get(&quot;contentCount&quot;).asInt()</span>
+<span class="pc" id="L150">            : 0;</span>
+
+        // Update engagement classification
+<span class="fc" id="L153">        EngagementClassifier.SessionMetrics metrics = new EngagementClassifier.SessionMetrics(</span>
+            durationSeconds,
+            contentCount
+        );
+<span class="fc" id="L157">        engagementClassifier.updateEngagement(profile, metrics);</span>
+
+        // Update session count
+<span class="fc" id="L160">        profile.setTotalSessions(profile.getTotalSessions() + 1);</span>
+<span class="fc" id="L161">        profile.setTimestamp(Instant.now());</span>
+
+        // Save and emit
+<span class="fc" id="L164">        saveProfile(profile);</span>
+<span class="fc" id="L165">        emitProfileUpdate(profile);</span>
+
+<span class="fc" id="L167">        log.info(&quot;Processed session_end for user: {}, duration: {}s, content: {}&quot;,</span>
+<span class="fc" id="L168">            userId, durationSeconds, contentCount);</span>
+<span class="fc" id="L169">    }</span>
+
+    /**
+     * Get or create a behavioral profile for a user
+     */
+    private BehavioralProfile getOrCreateProfile(String userId) {
+        // Check cache first
+<span class="fc" id="L176">        BehavioralProfile cached = profileCache.get(userId);</span>
+<span class="fc bfc" id="L177" title="All 2 branches covered.">        if (cached != null) {</span>
+<span class="fc" id="L178">            return cached;</span>
+        }
+
+        // Try to load from database
+<span class="fc" id="L182">        BehavioralProfile loaded = profileService.findByUserId(userId).orElse(null);</span>
+<span class="pc bpc" id="L183" title="1 of 2 branches missed.">        if (loaded != null) {</span>
+<span class="nc" id="L184">            profileCache.put(userId, loaded);</span>
+<span class="nc" id="L185">            return loaded;</span>
+        }
+
+        // Create new profile
+<span class="fc" id="L189">        BehavioralProfile newProfile = BehavioralProfile.builder()</span>
+<span class="fc" id="L190">            .userId(userId)</span>
+<span class="fc" id="L191">            .timestamp(Instant.now())</span>
+<span class="fc" id="L192">            .interests(new HashMap&lt;&gt;())</span>
+<span class="fc" id="L193">            .engagement(BehavioralProfile.EngagementPattern.builder()</span>
+<span class="fc" id="L194">                .classification(&quot;unknown&quot;)</span>
+<span class="fc" id="L195">                .confidence(0.0)</span>
+<span class="fc" id="L196">                .avgSessionDuration(0.0)</span>
+<span class="fc" id="L197">                .avgContentPerSession(0.0)</span>
+<span class="fc" id="L198">                .timePerContentRatio(0.0)</span>
+<span class="fc" id="L199">                .uniqueTopicRatio(0.0)</span>
+<span class="fc" id="L200">                .build())</span>
+<span class="fc" id="L201">            .peakWindows(List.of())</span>
+<span class="fc" id="L202">            .commonPaths(List.of())</span>
+<span class="fc" id="L203">            .totalSessions(0)</span>
+<span class="fc" id="L204">            .totalContentConsumed(0)</span>
+<span class="fc" id="L205">            .build();</span>
+
+<span class="fc" id="L207">        profileCache.put(userId, newProfile);</span>
+<span class="fc" id="L208">        return newProfile;</span>
+    }
+
+    /**
+     * Parse journey event from JSON
+     */
+    private InterestScorer.RawJourneyEvent parseJourneyEvent(JsonNode event) {
+<span class="fc" id="L215">        return new InterestScorer.RawJourneyEvent(</span>
+<span class="fc" id="L216">            getValue(event, &quot;journeyId&quot;),</span>
+<span class="fc" id="L217">            getValue(event, &quot;userId&quot;),</span>
+<span class="fc" id="L218">            getValue(event, &quot;sessionId&quot;),</span>
+<span class="fc" id="L219">            getValue(event, &quot;contentId&quot;),</span>
+<span class="fc" id="L220">            getValue(event, &quot;contentType&quot;),</span>
+<span class="fc" id="L221">            getValue(event, &quot;action&quot;),</span>
+<span class="fc" id="L222">            getIntValue(event, &quot;sequencePosition&quot;),</span>
+<span class="fc" id="L223">            getIntValue(event, &quot;timeInContentSeconds&quot;),</span>
+<span class="fc" id="L224">            getListValue(event, &quot;topicTags&quot;),</span>
+<span class="fc" id="L225">            getValue(event, &quot;difficultyLevel&quot;),</span>
+<span class="fc" id="L226">            getValue(event, &quot;previousContentId&quot;),</span>
+<span class="fc" id="L227">            getLongValue(event, &quot;timestamp&quot;)</span>
+        );
+    }
+
+    /**
+     * Save profile to database
+     */
+    private void saveProfile(BehavioralProfile profile) {
+<span class="fc" id="L235">        profileService.saveProfile(profile);</span>
+<span class="fc" id="L236">    }</span>
+
+    /**
+     * Emit profile update to Kafka for other services
+     * Serializes profile to JSON string before sending
+     */
+    private void emitProfileUpdate(BehavioralProfile profile) {
+        try {
+            // Serialize the update to JSON string for Kafka
+<span class="fc" id="L245">            String jsonMessage = objectMapper.writeValueAsString(Map.of(</span>
+<span class="fc" id="L246">                &quot;userId&quot;, profile.getUserId(),</span>
+                &quot;profile&quot;, profile,
+<span class="fc" id="L248">                &quot;timestamp&quot;, Instant.now()</span>
+            ));
+
+<span class="fc" id="L251">            kafkaTemplate.send(&quot;profile-updates&quot;, jsonMessage);</span>
+<span class="fc" id="L252">            log.debug(&quot;Emitted profile update for user: {}&quot;, profile.getUserId());</span>
+<span class="nc" id="L253">        } catch (Exception e) {</span>
+            // Don't fail the entire profiling if Kafka emission fails
+            // The profile is already saved in the database
+<span class="nc" id="L256">            log.warn(&quot;Failed to emit profile update to Kafka for user: {}&quot;,</span>
+<span class="nc" id="L257">                profile.getUserId(), e);</span>
+<span class="fc" id="L258">        }</span>
+<span class="fc" id="L259">    }</span>
+
+    // Helper methods for JSON parsing
+    private String getValue(JsonNode node, String field) {
+<span class="pc bpc" id="L263" title="1 of 4 branches missed.">        return node.has(field) &amp;&amp; !node.get(field).isNull() ? node.get(field).asText() : null;</span>
+    }
+
+    private Integer getIntValue(JsonNode node, String field) {
+<span class="pc bpc" id="L267" title="1 of 4 branches missed.">        return node.has(field) &amp;&amp; !node.get(field).isNull() ? node.get(field).asInt() : null;</span>
+    }
+
+    private Long getLongValue(JsonNode node, String field) {
+<span class="pc bpc" id="L271" title="3 of 4 branches missed.">        return node.has(field) &amp;&amp; !node.get(field).isNull() ? node.get(field).asLong() : null;</span>
+    }
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    private java.util.List&lt;String&gt; getListValue(JsonNode node, String field) {
+<span class="pc bpc" id="L276" title="2 of 4 branches missed.">        if (!node.has(field) || node.get(field).isNull()) {</span>
+<span class="nc" id="L277">            return List.of();</span>
+        }
+<span class="fc" id="L279">        var array = node.get(field);</span>
+<span class="pc bpc" id="L280" title="1 of 2 branches missed.">        if (array.isArray()) {</span>
+<span class="fc" id="L281">            java.util.List&lt;String&gt; result = new java.util.ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L282" title="All 2 branches covered.">            for (JsonNode item : array) {</span>
+<span class="fc" id="L283">                result.add(item.asText());</span>
+<span class="fc" id="L284">            }</span>
+<span class="fc" id="L285">            return result;</span>
+        }
+<span class="nc" id="L287">        return List.of();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

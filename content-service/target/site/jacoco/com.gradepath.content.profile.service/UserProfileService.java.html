@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserProfileService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">content-service</a> &gt; <a href="index.source.html" class="el_package">com.gradepath.content.profile.service</a> &gt; <span class="el_source">UserProfileService.java</span></div><h1>UserProfileService.java</h1><pre class="source lang-java linenums">package com.gradepath.content.profile.service;
+
+import com.gradepath.content.profile.event.SkillLevelChangedEvent;
+import com.gradepath.content.profile.model.*;
+import com.gradepath.content.profile.repository.*;
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.List;
+import java.util.UUID;
+
+@Service
+@Transactional
+<span class="fc" id="L20">@Slf4j</span>
+public class UserProfileService {
+
+    private final UserRepository userRepository;
+    private final UserProfileRepository profileRepository;
+    private final UserPreferencesRepository preferencesRepository;
+    private final SkillLevelRepository skillLevelRepository;
+    private final ApplicationEventPublisher eventPublisher;
+
+    public UserProfileService(
+            UserRepository userRepository,
+            UserProfileRepository profileRepository,
+            UserPreferencesRepository preferencesRepository,
+            SkillLevelRepository skillLevelRepository,
+<span class="fc" id="L34">            ApplicationEventPublisher eventPublisher) {</span>
+<span class="fc" id="L35">        this.userRepository = userRepository;</span>
+<span class="fc" id="L36">        this.profileRepository = profileRepository;</span>
+<span class="fc" id="L37">        this.preferencesRepository = preferencesRepository;</span>
+<span class="fc" id="L38">        this.skillLevelRepository = skillLevelRepository;</span>
+<span class="fc" id="L39">        this.eventPublisher = eventPublisher;</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * Get or create user by external ID
+     */
+    public User getOrCreateUser(String externalUserId) {
+<span class="nc" id="L46">        return userRepository.findByExternalUserId(externalUserId)</span>
+<span class="nc" id="L47">            .orElseGet(() -&gt; {</span>
+<span class="nc" id="L48">                User user = User.builder()</span>
+<span class="nc" id="L49">                    .externalUserId(externalUserId)</span>
+<span class="nc" id="L50">                    .build();</span>
+<span class="nc" id="L51">                return userRepository.save(user);</span>
+            });
+    }
+
+    /**
+     * Get user by UUID
+     */
+    public User getUser(UUID userId) {
+<span class="nc" id="L59">        return userRepository.findById(userId)</span>
+<span class="nc" id="L60">            .orElseThrow(() -&gt; new IllegalArgumentException(&quot;User not found: &quot; + userId));</span>
+    }
+
+    /**
+     * Get user profile with caching
+     */
+    @Cacheable(value = &quot;userProfile&quot;, key = &quot;#userId&quot;)
+    public UserProfileResponse getProfile(UUID userId) {
+<span class="nc" id="L68">        User user = getUser(userId);</span>
+<span class="nc" id="L69">        UserProfile profile = profileRepository.findByUserId(userId)</span>
+<span class="nc" id="L70">            .orElse(UserProfile.builder().userId(userId).build());</span>
+<span class="nc" id="L71">        UserPreferences preferences = preferencesRepository.findByUserId(userId)</span>
+<span class="nc" id="L72">            .orElse(createDefaultPreferences(userId));</span>
+<span class="nc" id="L73">        List&lt;SkillLevel&gt; skills = skillLevelRepository.findByUserId(userId);</span>
+
+<span class="nc" id="L75">        return UserProfileResponse.from(user, profile, preferences, skills);</span>
+    }
+
+    /**
+     * Update user profile
+     */
+    public UserProfile updateProfile(UUID userId, UserProfileRequest request) {
+<span class="nc" id="L82">        UserProfile profile = profileRepository.findByUserId(userId)</span>
+<span class="nc" id="L83">            .orElse(UserProfile.builder().userId(userId).build());</span>
+
+<span class="nc" id="L85">        profile.setInterests(request.interests());</span>
+<span class="nc" id="L86">        profile.setLearningGoals(request.learningGoals());</span>
+<span class="nc" id="L87">        profile.setPreferredLearningStyle(request.preferredLearningStyle());</span>
+<span class="nc" id="L88">        profile.setLanguage(request.language());</span>
+
+<span class="nc" id="L90">        return profileRepository.save(profile);</span>
+    }
+
+    /**
+     * Update user preferences
+     */
+    public UserPreferences updatePreferences(UUID userId, UserPreferencesRequest request) {
+<span class="nc" id="L97">        UserPreferences preferences = preferencesRepository.findByUserId(userId)</span>
+<span class="nc" id="L98">            .orElse(createDefaultPreferences(userId));</span>
+
+<span class="nc" id="L100">        preferences.setDifficultyPreference(request.difficultyPreference());</span>
+<span class="nc" id="L101">        preferences.setContentTypePreferences(request.contentTypePreferences());</span>
+<span class="nc" id="L102">        preferences.setTopicPreferences(request.topicPreferences());</span>
+<span class="nc" id="L103">        preferences.setDailyTimeTargetMinutes(request.dailyTimeTargetMinutes());</span>
+
+<span class="nc" id="L105">        return preferencesRepository.save(preferences);</span>
+    }
+
+    /**
+     * Handle skill level changed event
+     */
+    @EventListener
+    public void handleSkillLevelChanged(SkillLevelChangedEvent event) {
+<span class="nc" id="L113">        log.info(&quot;Handling SkillLevelChangedEvent for user: {}, topic: {}, score: {}&quot;,</span>
+<span class="nc" id="L114">            event.userId(), event.topic(), event.newScore());</span>
+
+<span class="nc" id="L116">        SkillLevel skill = skillLevelRepository</span>
+<span class="nc" id="L117">            .findByUserIdAndTopic(event.userId(), event.topic())</span>
+<span class="nc" id="L118">            .orElse(SkillLevel.builder()</span>
+<span class="nc" id="L119">                .user(getUser(event.userId()))</span>
+<span class="nc" id="L120">                .topic(event.topic())</span>
+<span class="nc" id="L121">                .level(50) // Default starting level</span>
+<span class="nc" id="L122">                .confidenceScore(BigDecimal.ZERO)</span>
+<span class="nc" id="L123">                .build());</span>
+
+        // Update skill level based on assessment
+<span class="nc" id="L126">        int newLevel = calculateNewLevel(skill.getLevel(), event.newScore());</span>
+<span class="nc" id="L127">        BigDecimal newConfidence = increaseConfidence(skill.getConfidenceScore());</span>
+
+<span class="nc" id="L129">        skill.setLevel(newLevel);</span>
+<span class="nc" id="L130">        skill.setConfidenceScore(newConfidence);</span>
+<span class="nc" id="L131">        skill.setLastAssessedAt(Instant.now());</span>
+
+<span class="nc" id="L133">        skillLevelRepository.save(skill);</span>
+
+<span class="nc" id="L135">        log.info(&quot;Updated skill level for user: {}, topic: {}, level: {} -&gt; {}, confidence: {} -&gt; {}&quot;,</span>
+<span class="nc" id="L136">            event.userId(), event.topic(), skill.getLevel(), newLevel,</span>
+<span class="nc" id="L137">            skill.getConfidenceScore(), newConfidence);</span>
+<span class="nc" id="L138">    }</span>
+
+    /**
+     * Create default preferences for a user
+     */
+    private UserPreferences createDefaultPreferences(UUID userId) {
+<span class="nc" id="L144">        UserPreferences preferences = UserPreferences.builder()</span>
+<span class="nc" id="L145">            .userId(userId)</span>
+<span class="nc" id="L146">            .difficultyPreference(3) // Medium difficulty</span>
+<span class="nc" id="L147">            .dailyTimeTargetMinutes(30)</span>
+<span class="nc" id="L148">            .build();</span>
+<span class="nc" id="L149">        return preferencesRepository.save(preferences);</span>
+    }
+
+    /**
+     * Calculate new skill level based on performance
+     */
+    private int calculateNewLevel(int currentLevel, Integer newScore) {
+<span class="nc bnc" id="L156" title="All 2 branches missed.">        if (newScore == null) {</span>
+<span class="nc" id="L157">            return currentLevel;</span>
+        }
+
+        // Simple algorithm: move towards the score
+        // If score &gt; current level, increase level
+        // If score &lt; current level, decrease level
+        // Use weighted average to smooth transitions
+<span class="nc" id="L164">        return (int) Math.round(currentLevel * 0.7 + newScore * 0.3);</span>
+    }
+
+    /**
+     * Increase confidence score slightly
+     */
+    private BigDecimal increaseConfidence(BigDecimal currentConfidence) {
+<span class="nc bnc" id="L171" title="All 2 branches missed.">        double current = currentConfidence != null ? currentConfidence.doubleValue() : 0.0;</span>
+<span class="nc" id="L172">        double increase = 0.05; // Increase by 5% each time</span>
+<span class="nc" id="L173">        double newConfidence = Math.min(1.0, current + increase);</span>
+<span class="nc" id="L174">        return BigDecimal.valueOf(newConfidence);</span>
+    }
+
+    // Response DTO
+<span class="nc" id="L178">    public record UserProfileResponse(</span>
+        UUID userId,
+        String email,
+        String displayName,
+        List&lt;String&gt; interests,
+        List&lt;String&gt; learningGoals,
+        String preferredLearningStyle,
+        String language,
+        Integer difficultyPreference,
+        java.util.Map&lt;String, Double&gt; contentTypePreferences,
+        java.util.Map&lt;String, Double&gt; topicPreferences,
+        Integer dailyTimeTargetMinutes,
+        List&lt;SkillDto&gt; skills
+    ) {
+        static UserProfileResponse from(User user, UserProfile profile, UserPreferences preferences, List&lt;SkillLevel&gt; skills) {
+<span class="nc" id="L193">            return new UserProfileResponse(</span>
+<span class="nc" id="L194">                user.getId(),</span>
+<span class="nc" id="L195">                user.getEmail(),</span>
+<span class="nc" id="L196">                user.getDisplayName(),</span>
+<span class="nc" id="L197">                profile.getInterests(),</span>
+<span class="nc" id="L198">                profile.getLearningGoals(),</span>
+<span class="nc" id="L199">                profile.getPreferredLearningStyle(),</span>
+<span class="nc" id="L200">                profile.getLanguage(),</span>
+<span class="nc" id="L201">                preferences.getDifficultyPreference(),</span>
+<span class="nc" id="L202">                preferences.getContentTypePreferences(),</span>
+<span class="nc" id="L203">                preferences.getTopicPreferences(),</span>
+<span class="nc" id="L204">                preferences.getDailyTimeTargetMinutes(),</span>
+<span class="nc" id="L205">                skills.stream().map(SkillDto::from).toList()</span>
+            );
+        }
+    }
+
+<span class="nc" id="L210">    public record SkillDto(</span>
+        String topic,
+        Integer level,
+        BigDecimal confidenceScore,
+        Instant lastAssessedAt
+    ) {
+        static SkillDto from(SkillLevel skill) {
+<span class="nc" id="L217">            return new SkillDto(</span>
+<span class="nc" id="L218">                skill.getTopic(),</span>
+<span class="nc" id="L219">                skill.getLevel(),</span>
+<span class="nc" id="L220">                skill.getConfidenceScore(),</span>
+<span class="nc" id="L221">                skill.getLastAssessedAt()</span>
+            );
+        }
+    }
+
+    // Request DTOs
+<span class="nc" id="L227">    public record UserProfileRequest(</span>
+        List&lt;String&gt; interests,
+        List&lt;String&gt; learningGoals,
+        String preferredLearningStyle,
+        String language
+    ) {}
+
+<span class="nc" id="L234">    public record UserPreferencesRequest(</span>
+        Integer difficultyPreference,
+        java.util.Map&lt;String, Double&gt; contentTypePreferences,
+        java.util.Map&lt;String, Double&gt; topicPreferences,
+        Integer dailyTimeTargetMinutes
+    ) {}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

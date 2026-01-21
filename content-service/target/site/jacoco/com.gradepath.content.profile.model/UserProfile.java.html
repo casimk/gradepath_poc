@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserProfile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">content-service</a> &gt; <a href="index.source.html" class="el_package">com.gradepath.content.profile.model</a> &gt; <span class="el_source">UserProfile.java</span></div><h1>UserProfile.java</h1><pre class="source lang-java linenums">package com.gradepath.content.profile.model;
+
+import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import java.util.List;
+import java.util.UUID;
+
+@Entity
+@Table(name = &quot;user_profiles&quot;)
+public class UserProfile {
+
+    @Id
+    @Column(name = &quot;user_id&quot;, nullable = false)
+    private UUID userId;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    @JoinColumn(name = &quot;user_id&quot;)
+    private User user;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = &quot;interests&quot;, columnDefinition = &quot;jsonb&quot;)
+    private List&lt;String&gt; interests;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = &quot;learning_goals&quot;, columnDefinition = &quot;jsonb&quot;)
+    private List&lt;String&gt; learningGoals;
+
+    @Column(name = &quot;preferred_learning_style&quot;)
+    private String preferredLearningStyle;
+
+<span class="pc" id="L34">    @Column(name = &quot;language&quot;, length = 10)</span>
+    private String language = &quot;en&quot;;
+
+    // Constructors
+<span class="fc" id="L38">    public UserProfile() {}</span>
+
+<span class="nc" id="L40">    private UserProfile(Builder builder) {</span>
+<span class="nc" id="L41">        this.userId = builder.userId;</span>
+<span class="nc" id="L42">        this.user = builder.user;</span>
+<span class="nc" id="L43">        this.interests = builder.interests;</span>
+<span class="nc" id="L44">        this.learningGoals = builder.learningGoals;</span>
+<span class="nc" id="L45">        this.preferredLearningStyle = builder.preferredLearningStyle;</span>
+<span class="nc" id="L46">        this.language = builder.language;</span>
+<span class="nc" id="L47">    }</span>
+
+    public static Builder builder() {
+<span class="nc" id="L50">        return new Builder();</span>
+    }
+
+    // Getters and Setters
+<span class="nc" id="L54">    public UUID getUserId() { return userId; }</span>
+<span class="nc" id="L55">    public void setUserId(UUID userId) { this.userId = userId; }</span>
+
+<span class="nc" id="L57">    public User getUser() { return user; }</span>
+<span class="nc" id="L58">    public void setUser(User user) { this.user = user; }</span>
+
+<span class="nc" id="L60">    public List&lt;String&gt; getInterests() { return interests; }</span>
+<span class="nc" id="L61">    public void setInterests(List&lt;String&gt; interests) { this.interests = interests; }</span>
+
+<span class="nc" id="L63">    public List&lt;String&gt; getLearningGoals() { return learningGoals; }</span>
+<span class="nc" id="L64">    public void setLearningGoals(List&lt;String&gt; learningGoals) { this.learningGoals = learningGoals; }</span>
+
+<span class="nc" id="L66">    public String getPreferredLearningStyle() { return preferredLearningStyle; }</span>
+<span class="nc" id="L67">    public void setPreferredLearningStyle(String preferredLearningStyle) { this.preferredLearningStyle = preferredLearningStyle; }</span>
+
+<span class="nc" id="L69">    public String getLanguage() { return language; }</span>
+<span class="nc" id="L70">    public void setLanguage(String language) { this.language = language; }</span>
+
+    // Builder class
+<span class="nc" id="L73">    public static class Builder {</span>
+        private UUID userId;
+        private User user;
+        private List&lt;String&gt; interests;
+        private List&lt;String&gt; learningGoals;
+        private String preferredLearningStyle;
+<span class="nc" id="L79">        private String language = &quot;en&quot;;</span>
+
+<span class="nc" id="L81">        public Builder userId(UUID userId) { this.userId = userId; return this; }</span>
+<span class="nc" id="L82">        public Builder user(User user) { this.user = user; return this; }</span>
+<span class="nc" id="L83">        public Builder interests(List&lt;String&gt; interests) { this.interests = interests; return this; }</span>
+<span class="nc" id="L84">        public Builder learningGoals(List&lt;String&gt; learningGoals) { this.learningGoals = learningGoals; return this; }</span>
+<span class="nc" id="L85">        public Builder preferredLearningStyle(String preferredLearningStyle) { this.preferredLearningStyle = preferredLearningStyle; return this; }</span>
+<span class="nc" id="L86">        public Builder language(String language) { this.language = language; return this; }</span>
+
+        public UserProfile build() {
+<span class="nc" id="L89">            return new UserProfile(this);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

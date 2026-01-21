@@ -112,12 +112,17 @@ public class JourneyAnalyzer {
      * Predict next likely content items based on current content
      */
     public List<String> predictNext(String currentContent) {
+        if (currentContent == null) {
+            return List.of();
+        }
+
         Map<String, Integer> fromMap = transitions.get(currentContent);
         if (fromMap == null || fromMap.isEmpty()) {
             return List.of();
         }
 
         return fromMap.entrySet().stream()
+            .filter(e -> e.getValue() >= MIN_FREQUENCY_THRESHOLD)
             .sorted((a, b) -> Integer.compare(b.getValue(), a.getValue()))
             .limit(TOP_NEXT_PREDICTIONS)
             .map(Map.Entry::getKey)

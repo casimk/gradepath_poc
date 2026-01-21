@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EventProcessingService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">content-service</a> &gt; <a href="index.source.html" class="el_package">com.gradepath.content.analytics.service</a> &gt; <span class="el_source">EventProcessingService.java</span></div><h1>EventProcessingService.java</h1><pre class="source lang-java linenums">package com.gradepath.content.analytics.service;
+
+import com.gradepath.content.analytics.event.ContentCompletedEvent;
+import com.gradepath.content.analytics.event.ContentViewedEvent;
+import com.gradepath.content.analytics.event.UserReactionEvent;
+import com.gradepath.content.analytics.model.ContentInteraction;
+import com.gradepath.content.analytics.model.InteractionType;
+import com.gradepath.content.analytics.repository.ContentInteractionRepository;
+import com.gradepath.content.profile.event.SkillLevelChangedEvent;
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
+
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+@Service
+<span class="fc" id="L24">@Slf4j</span>
+public class EventProcessingService {
+
+    private final ContentInteractionRepository interactionRepository;
+    private final ApplicationEventPublisher eventPublisher;
+
+    public EventProcessingService(
+            ContentInteractionRepository interactionRepository,
+<span class="fc" id="L32">            ApplicationEventPublisher eventPublisher) {</span>
+<span class="fc" id="L33">        this.interactionRepository = interactionRepository;</span>
+<span class="fc" id="L34">        this.eventPublisher = eventPublisher;</span>
+<span class="fc" id="L35">    }</span>
+
+    @Async
+    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
+    public void handleContentViewed(ContentViewedEvent event) {
+<span class="nc" id="L40">        log.info(&quot;Handling ContentViewedEvent for user: {}, content: {}&quot;,</span>
+<span class="nc" id="L41">            event.userId(), event.contentId());</span>
+
+        // Store interaction
+<span class="nc" id="L44">        ContentInteraction interaction = ContentInteraction.builder()</span>
+<span class="nc" id="L45">            .userId(event.userId())</span>
+<span class="nc" id="L46">            .contentId(event.contentId())</span>
+<span class="nc" id="L47">            .interactionType(InteractionType.VIEWED)</span>
+<span class="nc" id="L48">            .timestamp(Instant.ofEpochMilli(event.timestamp()))</span>
+<span class="nc" id="L49">            .sessionId(event.sessionId())</span>
+<span class="nc" id="L50">            .build();</span>
+
+<span class="nc" id="L52">        interactionRepository.save(interaction);</span>
+
+        // Additional processing could be added here (e.g., updating engagement metrics in Redis)
+<span class="nc" id="L55">    }</span>
+
+    @Async
+    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
+    public void handleContentCompleted(ContentCompletedEvent event) {
+<span class="nc" id="L60">        log.info(&quot;Handling ContentCompletedEvent for user: {}, content: {}, score: {}&quot;,</span>
+<span class="nc" id="L61">            event.userId(), event.contentId(), event.score());</span>
+
+        // Store interaction with metadata
+<span class="nc" id="L64">        Map&lt;String, Object&gt; metadata = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L65">        metadata.put(&quot;timeSpentSeconds&quot;, event.timeSpentSeconds());</span>
+<span class="nc" id="L66">        metadata.put(&quot;score&quot;, event.score());</span>
+<span class="nc" id="L67">        metadata.put(&quot;passed&quot;, event.passed());</span>
+
+<span class="nc" id="L69">        ContentInteraction interaction = ContentInteraction.builder()</span>
+<span class="nc" id="L70">            .userId(event.userId())</span>
+<span class="nc" id="L71">            .contentId(event.contentId())</span>
+<span class="nc" id="L72">            .interactionType(InteractionType.COMPLETED)</span>
+<span class="nc" id="L73">            .timestamp(Instant.ofEpochMilli(event.timestamp()))</span>
+<span class="nc" id="L74">            .sessionId(event.sessionId())</span>
+<span class="nc" id="L75">            .metadata(metadata)</span>
+<span class="nc" id="L76">            .build();</span>
+
+<span class="nc" id="L78">        interactionRepository.save(interaction);</span>
+
+        // Trigger skill level update if score is available
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        if (event.score() != null) {</span>
+            // Extract topic from content - for now using a simple placeholder
+            // In a real implementation, you'd fetch the content to get its topic
+<span class="nc" id="L84">            String topic = extractTopicFromContentId(event.contentId());</span>
+<span class="nc" id="L85">            eventPublisher.publishEvent(new SkillLevelChangedEvent(</span>
+<span class="nc" id="L86">                this, event.userId(), topic, event.score()</span>
+            ));
+        }
+<span class="nc" id="L89">    }</span>
+
+    /**
+     * Extract topic from content ID - placeholder implementation
+     * In production, this would fetch the content entity to get its actual topics
+     */
+    private String extractTopicFromContentId(String contentId) {
+        // Simple heuristic: use part of the contentId as topic
+        // In real implementation, query the content table
+<span class="nc" id="L98">        return &quot;general&quot;; // Default fallback</span>
+    }
+
+    @Async
+    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
+    public void handleUserReaction(UserReactionEvent event) {
+<span class="nc" id="L104">        log.info(&quot;Handling UserReactionEvent for user: {}, content: {}, reaction: {}&quot;,</span>
+<span class="nc" id="L105">            event.userId(), event.contentId(), event.reactionType());</span>
+
+        // Map reaction type to interaction type
+<span class="nc bnc" id="L108" title="All 5 branches missed.">        InteractionType interactionType = switch (event.reactionType().toLowerCase()) {</span>
+<span class="nc" id="L109">            case &quot;liked&quot; -&gt; InteractionType.LIKED;</span>
+<span class="nc" id="L110">            case &quot;disliked&quot; -&gt; InteractionType.DISLIKED;</span>
+<span class="nc" id="L111">            case &quot;bookmarked&quot; -&gt; InteractionType.BOOKMARKED;</span>
+<span class="nc" id="L112">            case &quot;shared&quot; -&gt; InteractionType.SHARED;</span>
+<span class="nc" id="L113">            default -&gt; InteractionType.VIEWED;</span>
+        };
+
+<span class="nc" id="L116">        ContentInteraction interaction = ContentInteraction.builder()</span>
+<span class="nc" id="L117">            .userId(event.userId())</span>
+<span class="nc" id="L118">            .contentId(event.contentId())</span>
+<span class="nc" id="L119">            .interactionType(interactionType)</span>
+<span class="nc" id="L120">            .timestamp(Instant.ofEpochMilli(event.timestamp()))</span>
+<span class="nc" id="L121">            .sessionId(event.sessionId())</span>
+<span class="nc" id="L122">            .build();</span>
+
+<span class="nc" id="L124">        interactionRepository.save(interaction);</span>
+<span class="nc" id="L125">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="9" passed="9" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-01-21T16:10:14 GMT" name="ProfilingSuite" finished-at="2026-01-21T16:10:22 GMT" duration-ms="7131">
+    <groups>
+      <group name="integration">
+        <method signature="ProfilingServiceIntegrationTest.oldInterests_decayWhenNewEventProcessed()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" name="oldInterests_decayWhenNewEventProcessed" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processEventWithMissingTopic_doesNotCrash()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" name="processEventWithMissingTopic_doesNotCrash" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processInvalidJsonEvent_doesNotCrash()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" name="processInvalidJsonEvent_doesNotCrash" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_createsProfileInDatabase()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" name="processJourneyEvent_endToEnd_createsProfileInDatabase" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_emitsKafkaMessage()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" name="processJourneyEvent_endToEnd_emitsKafkaMessage" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processMultipleJourneyEvents_accumulatesProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" name="processMultipleJourneyEvents_accumulatesProfile" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processSessionAndJourneyEvents_combinesData()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" name="processSessionAndJourneyEvents_combinesData" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processSessionEvent_endToEnd_updatesSessionCount()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" name="processSessionEvent_endToEnd_updatesSessionCount" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.profile_persistsAcrossRetrieval()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" name="profile_persistsAcrossRetrieval" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+      </group> <!-- integration -->
+    </groups>
+    <test started-at="2026-01-21T16:10:14 GMT" name="Unit Tests" finished-at="2026-01-21T16:10:14 GMT" duration-ms="5">
+    </test> <!-- Unit Tests -->
+    <test started-at="2026-01-21T16:10:14 GMT" name="Integration Tests" finished-at="2026-01-21T16:10:22 GMT" duration-ms="7105">
+      <class name="com.gradepath.content.profiling.ProfilingServiceIntegrationTest$TestcontainersInitializer">
+        <test-method is-config="true" signature="stopContainers()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest$TestcontainersInitializer@790d629a]" started-at="2026-01-21T16:10:22 GMT" name="stopContainers" finished-at="2026-01-21T16:10:22 GMT" duration-ms="408" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopContainers -->
+      </class> <!-- com.gradepath.content.profiling.ProfilingServiceIntegrationTest$TestcontainersInitializer -->
+      <class name="com.gradepath.content.profiling.ProfilingServiceIntegrationTest">
+        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:14 GMT" name="springTestContextBeforeTestClass" finished-at="2026-01-21T16:10:14 GMT" duration-ms="10" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:14 GMT" name="springTestContextPrepareTestInstance" finished-at="2026-01-21T16:10:21 GMT" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="6605" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T16:10:21 GMT" duration-ms="6" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.oldInterests_decayWhenNewEventProcessed() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="setUp" finished-at="2026-01-21T16:10:21 GMT" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="oldInterests_decayWhenNewEventProcessed()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="oldInterests_decayWhenNewEventProcessed" description="Old interests decay when new event is processed" finished-at="2026-01-21T16:10:21 GMT" duration-ms="341" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- oldInterests_decayWhenNewEventProcessed -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T16:10:21 GMT" duration-ms="5" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.oldInterests_decayWhenNewEventProcessed() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T16:10:21 GMT" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processEventWithMissingTopic_doesNotCrash() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="setUp" finished-at="2026-01-21T16:10:21 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processEventWithMissingTopic_doesNotCrash()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="processEventWithMissingTopic_doesNotCrash" description="Event with missing topic does not crash the service" finished-at="2026-01-21T16:10:21 GMT" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processEventWithMissingTopic_doesNotCrash -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T16:10:21 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processEventWithMissingTopic_doesNotCrash() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T16:10:21 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processInvalidJsonEvent_doesNotCrash()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="processInvalidJsonEvent_doesNotCrash()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="processInvalidJsonEvent_doesNotCrash" description="Invalid JSON event does not crash the service" finished-at="2026-01-21T16:10:21 GMT" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processInvalidJsonEvent_doesNotCrash -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="setUp" finished-at="2026-01-21T16:10:21 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T16:10:21 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processInvalidJsonEvent_doesNotCrash()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T16:10:21 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_createsProfileInDatabase() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="processJourneyEvent_endToEnd_createsProfileInDatabase()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="processJourneyEvent_endToEnd_createsProfileInDatabase" description="Process journey event end-to-end and persist to database" finished-at="2026-01-21T16:10:22 GMT" duration-ms="11" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processJourneyEvent_endToEnd_createsProfileInDatabase -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:21 GMT" name="setUp" finished-at="2026-01-21T16:10:21 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T16:10:22 GMT" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_createsProfileInDatabase() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T16:10:22 GMT" duration-ms="5" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_emitsKafkaMessage() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="setUp" finished-at="2026-01-21T16:10:22 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processJourneyEvent_endToEnd_emitsKafkaMessage()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="processJourneyEvent_endToEnd_emitsKafkaMessage" description="Process journey event and emit Kafka message" finished-at="2026-01-21T16:10:22 GMT" duration-ms="16" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processJourneyEvent_endToEnd_emitsKafkaMessage -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T16:10:22 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_emitsKafkaMessage() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T16:10:22 GMT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processMultipleJourneyEvents_accumulatesProfile() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="setUp" finished-at="2026-01-21T16:10:22 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processMultipleJourneyEvents_accumulatesProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="processMultipleJourneyEvents_accumulatesProfile" description="Process multiple journey events and accumulate profile data" finished-at="2026-01-21T16:10:22 GMT" duration-ms="12" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processMultipleJourneyEvents_accumulatesProfile -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T16:10:22 GMT" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processMultipleJourneyEvents_accumulatesProfile() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T16:10:22 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processSessionAndJourneyEvents_combinesData() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="processSessionAndJourneyEvents_combinesData()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="processSessionAndJourneyEvents_combinesData" description="Process both session and journey events and combine data" finished-at="2026-01-21T16:10:22 GMT" duration-ms="10" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processSessionAndJourneyEvents_combinesData -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="setUp" finished-at="2026-01-21T16:10:22 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T16:10:22 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processSessionAndJourneyEvents_combinesData() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T16:10:22 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processSessionEvent_endToEnd_updatesSessionCount() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="processSessionEvent_endToEnd_updatesSessionCount()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="processSessionEvent_endToEnd_updatesSessionCount" description="Process session end event and update session count" finished-at="2026-01-21T16:10:22 GMT" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processSessionEvent_endToEnd_updatesSessionCount -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="setUp" finished-at="2026-01-21T16:10:22 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T16:10:22 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processSessionEvent_endToEnd_updatesSessionCount() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T16:10:22 GMT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.profile_persistsAcrossRetrieval() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="profile_persistsAcrossRetrieval()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="profile_persistsAcrossRetrieval" description="Profile persists across database retrievals" finished-at="2026-01-21T16:10:22 GMT" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- profile_persistsAcrossRetrieval -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="setUp" finished-at="2026-01-21T16:10:22 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T16:10:22 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.profile_persistsAcrossRetrieval() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@8b1bfdf]" started-at="2026-01-21T16:10:22 GMT" name="springTestContextAfterTestClass" finished-at="2026-01-21T16:10:22 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- com.gradepath.content.profiling.ProfilingServiceIntegrationTest -->
+    </test> <!-- Integration Tests -->
+  </suite> <!-- ProfilingSuite -->
+</testng-results>

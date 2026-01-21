@@ -1,0 +1,8 @@
+com/gradepath/content/profiling/algorithm/InterestScorerTest.class
+com/gradepath/content/recommendation/profile/BehavioralProfileTest.class
+com/gradepath/content/profiling/ProfilingServiceTest.class
+com/gradepath/content/recommendation/profile/BehavioralProfileServiceTest.class
+com/gradepath/content/profiling/algorithm/JourneyAnalyzerTest.class
+com/gradepath/content/profiling/algorithm/EngagementClassifierTest.class
+com/gradepath/content/profiling/ProfilingServiceIntegrationTest$TestcontainersInitializer.class
+com/gradepath/content/profiling/ProfilingServiceIntegrationTest.class

@@ -39,7 +39,7 @@ public class BehavioralProfileService {
 
             repository.save(entity);
             log.info("Saved behavioral profile for user: {}", profile.getUserId());
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             log.error("Error serializing behavioral profile for user: {}", profile.getUserId(), e);
         }
     }
