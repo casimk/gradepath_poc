@@ -1,95 +1,31 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-
-interface TelemetryMetadata {
-  [key: string]: unknown;
-}
-
-// Simple web-only telemetry implementation for testing
-const simpleTelemetryService = {
-  sessionId: 'session-' + Date.now(),
-  userId: 'user-' + Math.random().toString(36).substr(2, 9),
-  initialized: false,
-
-  async initialize() {
-    this.initialized = true;
-    console.log('[Telemetry] Initialized', { userId: this.userId, sessionId: this.sessionId });
-  },
-
-  async trackEvent(eventType: string, metadata: TelemetryMetadata = {}) {
-    if (!this.initialized) return;
-
-    const event = {
-      eventType,
-      userId: this.userId,
-      sessionId: this.sessionId,
-      timestamp: Date.now(),
-      platform: 'web',
-      appVersion: '1.0.0',
-      metadata,
-    };
-
-    console.log('[Telemetry] Event:', event);
-
-    try {
-      const response = await fetch('http://localhost:3000/telemetry/event', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(event),
-      });
-
-      if (response.ok) {
-        console.log('[Telemetry] Event sent successfully');
-      }
-    } catch (error) {
-      console.error('[Telemetry] Failed to send event:', error);
-    }
-  }
-};
-
-// Initialize telemetry
-simpleTelemetryService.initialize();
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './auth/AuthContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { LoginPage } from './pages/LoginPage';
+import { SignupPage } from './pages/SignupPage';
+import { DashboardPage } from './pages/DashboardPage';
+import { OAuthCallbackPage } from './pages/OAuthCallbackPage';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const handleCountIncrement = async () => {
-    setCount((c) => c + 1);
-    await simpleTelemetryService.trackEvent('button_press', { buttonId: 'increment_counter', newCount: count + 1 });
-  };
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React + Telemetry</h1>
-      <div className="card">
-        <button onClick={handleCountIncrement}>
-          count is {count}
-        </button>
-        <p>
-          This web app uses telemetry tracking.
-          Click the button to see events in the console and Kafka UI!
-        </p>
-        <p style={{ fontSize: '0.9em', color: '#666' }}>
-          Check the console for [Telemetry] logs and Kafka UI at{' '}
-          <a href="http://localhost:8080" target="_blank" rel="noreferrer">
-            localhost:8080
-          </a>
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/auth/callback" element={<OAuthCallbackPage />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

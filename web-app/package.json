@@ -12,6 +12,8 @@
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-router-dom": "^6.22.0",
+    "axios": "^1.6.7",
     "@gradepath/telemetry": "file:../packages/@gradepath/telemetry",
     "uuid": "^9.0.1"
   },

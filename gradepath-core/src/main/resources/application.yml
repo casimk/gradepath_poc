@@ -103,3 +103,9 @@ spring.modulith:
   events:
     externalization:
       enabled: true
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:gradepath-jwt-secret-key-change-in-production}
+  expiration: ${JWT_EXPIRATION:900} # 15 minutes in seconds
+  refresh-expiration: ${REFRESH_TOKEN_EXPIRATION:604800} # 7 days in seconds
