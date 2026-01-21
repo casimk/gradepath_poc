@@ -2,6 +2,7 @@ import { Injectable, Logger, OnModuleInit, OnModuleDestroy } from '@nestjs/commo
 import { MessagePattern, EventPattern, Payload, ClientKafka } from '@nestjs/microservices';
 import { Inject } from '@nestjs/common';
 import { TelemetryEventDto, ScreenViewDto, PerformanceMetricDto } from './dto/telemetry-event.dto';
+import { ContentEventDto } from './dto/content-event.dto';
 
 @Injectable()
 export class TelemetryService implements OnModuleInit, OnModuleDestroy {
@@ -84,6 +85,31 @@ export class TelemetryService implements OnModuleInit, OnModuleDestroy {
       status: 'ok',
       service: 'telemetry',
       timestamp: new Date().toISOString(),
+    };
+  }
+
+  async trackContentEvent(event: ContentEventDto) {
+    const eventWithTimestamp = {
+      ...event,
+      timestamp: event.timestamp || Date.now(),
+    };
+
+    this.logger.log(`Content event tracked: ${event.eventType} for user ${event.userId}`);
+
+    // Publish to Kafka topic 'content-interactions' for Spring Boot
+    this.kafkaClient.emit('content-interactions', eventWithTimestamp);
+
+    // Also publish to 'behavioral-events' for behavioral profiling
+    this.kafkaClient.emit('behavioral-events', {
+      ...eventWithTimestamp,
+      topic: 'content_journey',
+      action: event.eventType === 'content_completed' ? 'completed' : 'started',
+    });
+
+    return {
+      success: true,
+      message: 'Content event tracked successfully',
+      event: eventWithTimestamp,
     };
   }
 

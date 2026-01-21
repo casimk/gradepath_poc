@@ -1,6 +1,7 @@
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { TelemetryEventDto, ScreenViewDto, PerformanceMetricDto } from './dto/telemetry-event.dto';
+import { ContentEventDto } from './dto/content-event.dto';
 import { TelemetryService } from './telemetry.service';
 
 @ApiTags('telemetry')
@@ -27,6 +28,13 @@ export class TelemetryController {
   @ApiResponse({ status: 201, description: 'Performance metric tracked successfully' })
   async trackPerformance(@Body() metric: PerformanceMetricDto) {
     return this.telemetryService.trackPerformance(metric);
+  }
+
+  @Post('content')
+  @ApiOperation({ summary: 'Track a content interaction event' })
+  @ApiResponse({ status: 201, description: 'Content event tracked successfully' })
+  async trackContent(@Body() event: ContentEventDto) {
+    return this.telemetryService.trackContentEvent(event);
   }
 
   @Get('health')

@@ -21,7 +21,7 @@ async function bootstrap() {
     credentials: true,
   });
 
-  // Connect to Kafka as microservice
+  // Connect to Kafka as microservice (main telemetry consumer)
   const kafkaHost = process.env.KAFKA_BROKERS || 'localhost:9092';
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.KAFKA,
