@@ -1,0 +1,1165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="106" passed="106" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-01-21T17:50:12 GMT" name="ProfilingSuite" finished-at="2026-01-21T17:50:19 GMT" duration-ms="7005">
+    <groups>
+      <group name="unit">
+        <method signature="ProfilingServiceTest.emitProfileUpdate_kafkaFailure_logsWarning()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="emitProfileUpdate_kafkaFailure_logsWarning" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.getListValue_arrayField_returnsList()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="getListValue_arrayField_returnsList" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.getListValue_missingField_returnsEmptyList()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="getListValue_missingField_returnsEmptyList" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.getListValue_nonArrayField_returnsEmptyList()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="getListValue_nonArrayField_returnsEmptyList" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.getOrCreateProfile_fromCache()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="getOrCreateProfile_fromCache" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.getOrCreateProfile_fromDatabase()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="getOrCreateProfile_fromDatabase" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.getOrCreateProfile_newProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="getOrCreateProfile_newProfile" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.getValue_missingField_returnsNull()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="getValue_missingField_returnsNull" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.getValue_nullField_returnsNull()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="getValue_nullField_returnsNull" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.parseJourneyEvent_allFieldsPresent()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="parseJourneyEvent_allFieldsPresent" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.parseJourneyEvent_missingOptionalFields()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="parseJourneyEvent_missingOptionalFields" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processJourneyEvent_createsNewProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processJourneyEvent_createsNewProfile" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processJourneyEvent_emitsProfileUpdate()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processJourneyEvent_emitsProfileUpdate" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processJourneyEvent_savesProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processJourneyEvent_savesProfile" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processJourneyEvent_updatesExistingProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processJourneyEvent_updatesExistingProfile" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processRawBehavioralEvent_contentJourney_processesEvent()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processRawBehavioralEvent_contentJourney_processesEvent" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processRawBehavioralEvent_malformedJson_logsError()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processRawBehavioralEvent_malformedJson_logsError" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processRawBehavioralEvent_nullTopic_warnsAndReturns()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processRawBehavioralEvent_nullTopic_warnsAndReturns" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processRawBehavioralEvent_sessionLifecycle_processesEvent()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processRawBehavioralEvent_sessionLifecycle_processesEvent" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processRawBehavioralEvent_unknownTopic_warnsAndReturns()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processRawBehavioralEvent_unknownTopic_warnsAndReturns" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processSessionEvent_missingContentCount_defaultsTo0()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processSessionEvent_missingContentCount_defaultsTo0" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processSessionEvent_missingDuration_defaultsTo0()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processSessionEvent_missingDuration_defaultsTo0" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processSessionEvent_sessionEnd_processes()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processSessionEvent_sessionEnd_processes" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="ProfilingServiceTest.processSessionEvent_sessionStart_ignored()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" name="processSessionEvent_sessionStart_ignored" class="com.gradepath.content.profiling.ProfilingServiceTest"/>
+        <method signature="EngagementClassifierTest.classify_casualBrowser()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="classify_casualBrowser" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.classify_deepLearner()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="classify_deepLearner" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.classify_explorer()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="classify_explorer" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.classify_longSessionWithManyContent_bingeConsumer()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="classify_longSessionWithManyContent_bingeConsumer" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.classify_moderateBehavior()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="classify_moderateBehavior" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.getSessionMetrics_contentZero()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="getSessionMetrics_contentZero" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.getSessionMetrics_durationZero()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="getSessionMetrics_durationZero" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.getUserSessions_returnsImmutable()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="getUserSessions_returnsImmutable" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.updateBasedOnTopicDiversity_highRatio_explorer()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="updateBasedOnTopicDiversity_highRatio_explorer" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.updateBasedOnTopicDiversity_lowRatio_specialist()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="updateBasedOnTopicDiversity_lowRatio_specialist" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.updateBasedOnTopicDiversity_nullEngagement_noUpdate()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="updateBasedOnTopicDiversity_nullEngagement_noUpdate" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.updateEngagement_firstSession_unknown()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="updateEngagement_firstSession_unknown" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.updateEngagement_maxSessionsPerUser()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="updateEngagement_maxSessionsPerUser" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.updateEngagement_threeSessions_classifies()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="updateEngagement_threeSessions_classifies" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="EngagementClassifierTest.updateEngagement_twoSessions_classifies()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" name="updateEngagement_twoSessions_classifies" class="com.gradepath.content.profiling.algorithm.EngagementClassifierTest"/>
+        <method signature="InterestScorerTest.applyDecay_14Days_quarterRemaining()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="applyDecay_14Days_quarterRemaining" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.applyDecay_7DaysHalfLife()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="applyDecay_7DaysHalfLife" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.applyDecay_freshEvent_noDecayApplied()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="applyDecay_freshEvent_noDecayApplied" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.applyDecay_lowScore_isRemoved()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="applyDecay_lowScore_isRemoved" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.applyDecay_removesBelowThreshold()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="applyDecay_removesBelowThreshold" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.getActionMultiplier_abandoned_returns0_5()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="getActionMultiplier_abandoned_returns0_5" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.getActionMultiplier_caseInsensitive()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="getActionMultiplier_caseInsensitive" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.getActionMultiplier_completed_returns2_0()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="getActionMultiplier_completed_returns2_0" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.getActionMultiplier_revisited_returns3_0()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="getActionMultiplier_revisited_returns3_0" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.getActionMultiplier_started_returns1_0()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="getActionMultiplier_started_returns1_0" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.getActionMultiplier_unknown_returns1_0()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="getActionMultiplier_unknown_returns1_0" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.updateInterests_emptyTopicTags_returnsEarly()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="updateInterests_emptyTopicTags_returnsEarly" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.updateInterests_existingTopic_appliesEMA()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="updateInterests_existingTopic_appliesEMA" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.updateInterests_multipleTopics_allUpdated()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="updateInterests_multipleTopics_allUpdated" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.updateInterests_newTopic_createsScore()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="updateInterests_newTopic_createsScore" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.updateInterests_nullTimeInContent_defaultsTo0()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="updateInterests_nullTimeInContent_defaultsTo0" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.updateInterests_nullTopicTags_returnsEarly()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="updateInterests_nullTopicTags_returnsEarly" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.updateTopicScore_timeWeight_cappedAt1_5()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="updateTopicScore_timeWeight_cappedAt1_5" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="InterestScorerTest.updateTopicScore_timeWeight_linearBelow60()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" name="updateTopicScore_timeWeight_linearBelow60" class="com.gradepath.content.profiling.algorithm.InterestScorerTest"/>
+        <method signature="JourneyAnalyzerTest.analyzeJourney_emptyTopicTags_noError()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="analyzeJourney_emptyTopicTags_noError" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.analyzeJourney_nullTopicTags_noError()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="analyzeJourney_nullTopicTags_noError" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.analyzeJourney_tracksTopicTags()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="analyzeJourney_tracksTopicTags" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.calculateUniqueTopicRatio_diverseContent()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="calculateUniqueTopicRatio_diverseContent" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.calculateUniqueTopicRatio_repetitiveContent()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="calculateUniqueTopicRatio_repetitiveContent" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.calculateUniqueTopicRatio_zeroContent_noDivisionByZero()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="calculateUniqueTopicRatio_zeroContent_noDivisionByZero" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.clearTransitions_clearsAll()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="clearTransitions_clearsAll" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.clearUserTopics_clearsAll()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="clearUserTopics_clearsAll" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.getTransitionMatrix_returnsImmutable()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="getTransitionMatrix_returnsImmutable" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.getUserTopics_returnsImmutable()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="getUserTopics_returnsImmutable" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.predictNext_noTransitions_emptyList()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="predictNext_noTransitions_emptyList" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.predictNext_nullFromContent_emptyList()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="predictNext_nullFromContent_emptyList" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.predictNext_withTransitions()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="predictNext_withTransitions" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.trackTransition_incrementsFrequency()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="trackTransition_incrementsFrequency" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.trackTransition_newTransition_createsEntry()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="trackTransition_newTransition_createsEntry" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.transitionProbability_calculation()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="transitionProbability_calculation" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.updateCommonPaths_filtersByThreshold()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="updateCommonPaths_filtersByThreshold" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.updateCommonPaths_limitsToTop20()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="updateCommonPaths_limitsToTop20" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="JourneyAnalyzerTest.updateCommonPaths_sortsByFrequency()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" name="updateCommonPaths_sortsByFrequency" class="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest"/>
+        <method signature="BehavioralProfileServiceTest.cleanupOldProfiles_placeholder()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" name="cleanupOldProfiles_placeholder" class="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest"/>
+        <method signature="BehavioralProfileServiceTest.cleanupOldProfiles_withNegativeKeepCount()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" name="cleanupOldProfiles_withNegativeKeepCount" class="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest"/>
+        <method signature="BehavioralProfileServiceTest.deserializeProfile_invalidJson_logsError()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" name="deserializeProfile_invalidJson_logsError" class="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest"/>
+        <method signature="BehavioralProfileServiceTest.deserializeProfile_validJson_returnsProfile()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" name="deserializeProfile_validJson_returnsProfile" class="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest"/>
+        <method signature="BehavioralProfileServiceTest.findByUserId_aliasWorks()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" name="findByUserId_aliasWorks" class="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest"/>
+        <method signature="BehavioralProfileServiceTest.getProfile_existingUser_returnsProfile()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" name="getProfile_existingUser_returnsProfile" class="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest"/>
+        <method signature="BehavioralProfileServiceTest.getProfile_nonExistingUser_returnsEmpty()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" name="getProfile_nonExistingUser_returnsEmpty" class="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest"/>
+        <method signature="BehavioralProfileServiceTest.getProfile_uuidOverload_works()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" name="getProfile_uuidOverload_works" class="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest"/>
+        <method signature="BehavioralProfileServiceTest.saveProfile_nullTimestamp_usesNow()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" name="saveProfile_nullTimestamp_usesNow" class="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest"/>
+        <method signature="BehavioralProfileServiceTest.saveProfile_serializationError_logsError()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" name="saveProfile_serializationError_logsError" class="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest"/>
+        <method signature="BehavioralProfileServiceTest.saveProfile_validProfile_savesEntity()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" name="saveProfile_validProfile_savesEntity" class="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest"/>
+        <method signature="BehavioralProfileTest.ContentTransitionBuilder_createsValid()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" name="ContentTransitionBuilder_createsValid" class="com.gradepath.content.recommendation.profile.BehavioralProfileTest"/>
+        <method signature="BehavioralProfileTest.EngagementPatternBuilder_createsValid()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" name="EngagementPatternBuilder_createsValid" class="com.gradepath.content.recommendation.profile.BehavioralProfileTest"/>
+        <method signature="BehavioralProfileTest.InterestScoreBuilder_createsValid()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" name="InterestScoreBuilder_createsValid" class="com.gradepath.content.recommendation.profile.BehavioralProfileTest"/>
+        <method signature="BehavioralProfileTest.PeakWindowBuilder_createsValid()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" name="PeakWindowBuilder_createsValid" class="com.gradepath.content.recommendation.profile.BehavioralProfileTest"/>
+        <method signature="BehavioralProfileTest.builder_createsValidProfile()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" name="builder_createsValidProfile" class="com.gradepath.content.recommendation.profile.BehavioralProfileTest"/>
+        <method signature="BehavioralProfileTest.builder_defaultValues_emptyCollections()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" name="builder_defaultValues_emptyCollections" class="com.gradepath.content.recommendation.profile.BehavioralProfileTest"/>
+        <method signature="BehavioralProfileTest.lombok_equalsHashCode_work()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" name="lombok_equalsHashCode_work" class="com.gradepath.content.recommendation.profile.BehavioralProfileTest"/>
+        <method signature="BehavioralProfileTest.lombok_gettersSetters_work()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" name="lombok_gettersSetters_work" class="com.gradepath.content.recommendation.profile.BehavioralProfileTest"/>
+        <method signature="BehavioralProfileTest.lombok_toString_works()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" name="lombok_toString_works" class="com.gradepath.content.recommendation.profile.BehavioralProfileTest"/>
+      </group> <!-- unit -->
+      <group name="integration">
+        <method signature="ProfilingServiceIntegrationTest.oldInterests_decayWhenNewEventProcessed()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" name="oldInterests_decayWhenNewEventProcessed" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processEventWithMissingTopic_doesNotCrash()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" name="processEventWithMissingTopic_doesNotCrash" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processInvalidJsonEvent_doesNotCrash()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" name="processInvalidJsonEvent_doesNotCrash" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_createsProfileInDatabase()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" name="processJourneyEvent_endToEnd_createsProfileInDatabase" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_emitsKafkaMessage()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" name="processJourneyEvent_endToEnd_emitsKafkaMessage" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processMultipleJourneyEvents_accumulatesProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" name="processMultipleJourneyEvents_accumulatesProfile" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processSessionAndJourneyEvents_combinesData()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" name="processSessionAndJourneyEvents_combinesData" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.processSessionEvent_endToEnd_updatesSessionCount()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" name="processSessionEvent_endToEnd_updatesSessionCount" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+        <method signature="ProfilingServiceIntegrationTest.profile_persistsAcrossRetrieval()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" name="profile_persistsAcrossRetrieval" class="com.gradepath.content.profiling.ProfilingServiceIntegrationTest"/>
+      </group> <!-- integration -->
+    </groups>
+    <test started-at="2026-01-21T17:50:12 GMT" name="Unit Tests" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1561">
+      <class name="com.gradepath.content.recommendation.profile.BehavioralProfileTest">
+        <test-method signature="ContentTransitionBuilder_createsValid()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" started-at="2026-01-21T17:50:14 GMT" name="ContentTransitionBuilder_createsValid" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ContentTransitionBuilder_createsValid -->
+        <test-method signature="EngagementPatternBuilder_createsValid()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" started-at="2026-01-21T17:50:14 GMT" name="EngagementPatternBuilder_createsValid" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EngagementPatternBuilder_createsValid -->
+        <test-method signature="PeakWindowBuilder_createsValid()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" started-at="2026-01-21T17:50:14 GMT" name="PeakWindowBuilder_createsValid" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PeakWindowBuilder_createsValid -->
+        <test-method signature="InterestScoreBuilder_createsValid()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" started-at="2026-01-21T17:50:14 GMT" name="InterestScoreBuilder_createsValid" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InterestScoreBuilder_createsValid -->
+        <test-method signature="builder_createsValidProfile()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" started-at="2026-01-21T17:50:14 GMT" name="builder_createsValidProfile" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- builder_createsValidProfile -->
+        <test-method signature="builder_defaultValues_emptyCollections()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" started-at="2026-01-21T17:50:14 GMT" name="builder_defaultValues_emptyCollections" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- builder_defaultValues_emptyCollections -->
+        <test-method signature="lombok_equalsHashCode_work()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" started-at="2026-01-21T17:50:14 GMT" name="lombok_equalsHashCode_work" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- lombok_equalsHashCode_work -->
+        <test-method signature="lombok_toString_works()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" started-at="2026-01-21T17:50:14 GMT" name="lombok_toString_works" finished-at="2026-01-21T17:50:14 GMT" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- lombok_toString_works -->
+        <test-method signature="lombok_gettersSetters_work()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f]" started-at="2026-01-21T17:50:14 GMT" name="lombok_gettersSetters_work" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- lombok_gettersSetters_work -->
+      </class> <!-- com.gradepath.content.recommendation.profile.BehavioralProfileTest -->
+      <class name="com.gradepath.content.profiling.ProfilingServiceTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="199" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="emitProfileUpdate_kafkaFailure_logsWarning()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="emitProfileUpdate_kafkaFailure_logsWarning" finished-at="2026-01-21T17:50:14 GMT" duration-ms="13" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- emitProfileUpdate_kafkaFailure_logsWarning -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getListValue_arrayField_returnsList()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="getListValue_arrayField_returnsList" finished-at="2026-01-21T17:50:14 GMT" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getListValue_arrayField_returnsList -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getListValue_missingField_returnsEmptyList()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="getListValue_missingField_returnsEmptyList" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getListValue_missingField_returnsEmptyList -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getListValue_nonArrayField_returnsEmptyList()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="getListValue_nonArrayField_returnsEmptyList" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getListValue_nonArrayField_returnsEmptyList -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getOrCreateProfile_fromCache()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="getOrCreateProfile_fromCache" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getOrCreateProfile_fromCache -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getOrCreateProfile_fromDatabase()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="getOrCreateProfile_fromDatabase" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getOrCreateProfile_fromDatabase -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getOrCreateProfile_newProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="getOrCreateProfile_newProfile" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getOrCreateProfile_newProfile -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getValue_missingField_returnsNull()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="getValue_missingField_returnsNull" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getValue_missingField_returnsNull -->
+        <test-method signature="getValue_nullField_returnsNull()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="getValue_nullField_returnsNull" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getValue_nullField_returnsNull -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="parseJourneyEvent_allFieldsPresent()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="parseJourneyEvent_allFieldsPresent" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseJourneyEvent_allFieldsPresent -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="parseJourneyEvent_missingOptionalFields()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="parseJourneyEvent_missingOptionalFields" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseJourneyEvent_missingOptionalFields -->
+        <test-method signature="processJourneyEvent_createsNewProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processJourneyEvent_createsNewProfile" finished-at="2026-01-21T17:50:14 GMT" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processJourneyEvent_createsNewProfile -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processJourneyEvent_emitsProfileUpdate()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processJourneyEvent_emitsProfileUpdate" finished-at="2026-01-21T17:50:14 GMT" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processJourneyEvent_emitsProfileUpdate -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processJourneyEvent_savesProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processJourneyEvent_savesProfile" finished-at="2026-01-21T17:50:14 GMT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processJourneyEvent_savesProfile -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processJourneyEvent_updatesExistingProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processJourneyEvent_updatesExistingProfile" finished-at="2026-01-21T17:50:14 GMT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processJourneyEvent_updatesExistingProfile -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processRawBehavioralEvent_contentJourney_processesEvent()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processRawBehavioralEvent_contentJourney_processesEvent" finished-at="2026-01-21T17:50:14 GMT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processRawBehavioralEvent_contentJourney_processesEvent -->
+        <test-method signature="processRawBehavioralEvent_malformedJson_logsError()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processRawBehavioralEvent_malformedJson_logsError" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processRawBehavioralEvent_malformedJson_logsError -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processRawBehavioralEvent_nullTopic_warnsAndReturns()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processRawBehavioralEvent_nullTopic_warnsAndReturns" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processRawBehavioralEvent_nullTopic_warnsAndReturns -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processRawBehavioralEvent_sessionLifecycle_processesEvent()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processRawBehavioralEvent_sessionLifecycle_processesEvent" finished-at="2026-01-21T17:50:14 GMT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processRawBehavioralEvent_sessionLifecycle_processesEvent -->
+        <test-method signature="processRawBehavioralEvent_unknownTopic_warnsAndReturns()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processRawBehavioralEvent_unknownTopic_warnsAndReturns" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processRawBehavioralEvent_unknownTopic_warnsAndReturns -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processSessionEvent_missingContentCount_defaultsTo0()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processSessionEvent_missingContentCount_defaultsTo0" finished-at="2026-01-21T17:50:14 GMT" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processSessionEvent_missingContentCount_defaultsTo0 -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processSessionEvent_missingDuration_defaultsTo0()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processSessionEvent_missingDuration_defaultsTo0" finished-at="2026-01-21T17:50:14 GMT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processSessionEvent_missingDuration_defaultsTo0 -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processSessionEvent_sessionEnd_processes()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processSessionEvent_sessionEnd_processes" finished-at="2026-01-21T17:50:14 GMT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processSessionEvent_sessionEnd_processes -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processSessionEvent_sessionStart_ignored()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceTest@787508ca]" started-at="2026-01-21T17:50:14 GMT" name="processSessionEvent_sessionStart_ignored" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processSessionEvent_sessionStart_ignored -->
+      </class> <!-- com.gradepath.content.profiling.ProfilingServiceTest -->
+      <class name="com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="776" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="cleanupOldProfiles_placeholder()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="cleanupOldProfiles_placeholder" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanupOldProfiles_placeholder -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="cleanupOldProfiles_withNegativeKeepCount()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="cleanupOldProfiles_withNegativeKeepCount" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanupOldProfiles_withNegativeKeepCount -->
+        <test-method signature="deserializeProfile_invalidJson_logsError()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="deserializeProfile_invalidJson_logsError" finished-at="2026-01-21T17:50:13 GMT" duration-ms="69" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deserializeProfile_invalidJson_logsError -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="deserializeProfile_validJson_returnsProfile()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="deserializeProfile_validJson_returnsProfile" finished-at="2026-01-21T17:50:13 GMT" duration-ms="32" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deserializeProfile_validJson_returnsProfile -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="findByUserId_aliasWorks()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="findByUserId_aliasWorks" finished-at="2026-01-21T17:50:13 GMT" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findByUserId_aliasWorks -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getProfile_existingUser_returnsProfile()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="getProfile_existingUser_returnsProfile" finished-at="2026-01-21T17:50:13 GMT" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getProfile_existingUser_returnsProfile -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getProfile_nonExistingUser_returnsEmpty()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="getProfile_nonExistingUser_returnsEmpty" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getProfile_nonExistingUser_returnsEmpty -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getProfile_uuidOverload_works()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="getProfile_uuidOverload_works" finished-at="2026-01-21T17:50:13 GMT" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getProfile_uuidOverload_works -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="saveProfile_nullTimestamp_usesNow()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="saveProfile_nullTimestamp_usesNow" finished-at="2026-01-21T17:50:13 GMT" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- saveProfile_nullTimestamp_usesNow -->
+        <test-method signature="saveProfile_serializationError_logsError()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="saveProfile_serializationError_logsError" finished-at="2026-01-21T17:50:14 GMT" duration-ms="228" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- saveProfile_serializationError_logsError -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="saveProfile_validProfile_savesEntity()[pri:0, instance:com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c]" started-at="2026-01-21T17:50:14 GMT" name="saveProfile_validProfile_savesEntity" finished-at="2026-01-21T17:50:14 GMT" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- saveProfile_validProfile_savesEntity -->
+      </class> <!-- com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest -->
+      <class name="com.gradepath.content.profiling.algorithm.InterestScorerTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:12 GMT" name="setUp" finished-at="2026-01-21T17:50:12 GMT" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="applyDecay_14Days_quarterRemaining()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:12 GMT" name="applyDecay_14Days_quarterRemaining" description="interest decays to quarter after 14 days" finished-at="2026-01-21T17:50:12 GMT" duration-ms="36" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- applyDecay_14Days_quarterRemaining -->
+        <test-method signature="applyDecay_7DaysHalfLife()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:12 GMT" name="applyDecay_7DaysHalfLife" description="interest decays to half after 7 days" finished-at="2026-01-21T17:50:12 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- applyDecay_7DaysHalfLife -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:12 GMT" name="setUp" finished-at="2026-01-21T17:50:12 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="applyDecay_lowScore_isRemoved()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:12 GMT" name="applyDecay_lowScore_isRemoved" description="interest below 1.0 threshold is removed after decay" finished-at="2026-01-21T17:50:13 GMT" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- applyDecay_lowScore_isRemoved -->
+        <test-method signature="applyDecay_freshEvent_noDecayApplied()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:12 GMT" name="applyDecay_freshEvent_noDecayApplied" description="fresh event has no decay applied" finished-at="2026-01-21T17:50:12 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- applyDecay_freshEvent_noDecayApplied -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:12 GMT" name="setUp" finished-at="2026-01-21T17:50:12 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:12 GMT" name="setUp" finished-at="2026-01-21T17:50:12 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getActionMultiplier_abandoned_returns0_5()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="getActionMultiplier_abandoned_returns0_5" description="action &#039;abandoned&#039; returns 0.5 multiplier" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getActionMultiplier_abandoned_returns0_5 -->
+        <test-method signature="applyDecay_removesBelowThreshold()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="applyDecay_removesBelowThreshold" description="interest below threshold is removed" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- applyDecay_removesBelowThreshold -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getActionMultiplier_caseInsensitive()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="getActionMultiplier_caseInsensitive" description="action multiplier is case insensitive" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getActionMultiplier_caseInsensitive -->
+        <test-method signature="getActionMultiplier_completed_returns2_0()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="getActionMultiplier_completed_returns2_0" description="action &#039;completed&#039; returns 2.0 multiplier" finished-at="2026-01-21T17:50:13 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getActionMultiplier_completed_returns2_0 -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getActionMultiplier_started_returns1_0()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="getActionMultiplier_started_returns1_0" description="action &#039;started&#039; returns 1.0 multiplier" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getActionMultiplier_started_returns1_0 -->
+        <test-method signature="getActionMultiplier_revisited_returns3_0()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="getActionMultiplier_revisited_returns3_0" description="action &#039;revisited&#039; returns 3.0 multiplier" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getActionMultiplier_revisited_returns3_0 -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="updateInterests_emptyTopicTags_returnsEarly()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="updateInterests_emptyTopicTags_returnsEarly" description="updateInterests with empty topic tags returns early" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateInterests_emptyTopicTags_returnsEarly -->
+        <test-method signature="getActionMultiplier_unknown_returns1_0()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="getActionMultiplier_unknown_returns1_0" description="unknown action returns 1.0 default multiplier" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getActionMultiplier_unknown_returns1_0 -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="updateInterests_existingTopic_appliesEMA()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="updateInterests_existingTopic_appliesEMA" description="updateInterests with existing topic applies EMA" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateInterests_existingTopic_appliesEMA -->
+        <test-method signature="updateInterests_multipleTopics_allUpdated()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="updateInterests_multipleTopics_allUpdated" description="multiple topics are all updated" finished-at="2026-01-21T17:50:13 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateInterests_multipleTopics_allUpdated -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="updateInterests_newTopic_createsScore()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="updateInterests_newTopic_createsScore" description="updateInterests with new topic creates score" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateInterests_newTopic_createsScore -->
+        <test-method signature="updateInterests_nullTimeInContent_defaultsTo0()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="updateInterests_nullTimeInContent_defaultsTo0" description="null timeInContent results in score below threshold and is removed" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateInterests_nullTimeInContent_defaultsTo0 -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="updateInterests_nullTopicTags_returnsEarly()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="updateInterests_nullTopicTags_returnsEarly" description="updateInterests with null topic tags returns early" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateInterests_nullTopicTags_returnsEarly -->
+        <test-method signature="updateTopicScore_timeWeight_cappedAt1_5()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="updateTopicScore_timeWeight_cappedAt1_5" description="time weight is capped at 1.5 for 180+ seconds" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateTopicScore_timeWeight_cappedAt1_5 -->
+        <test-method signature="updateTopicScore_timeWeight_linearBelow60()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="updateTopicScore_timeWeight_linearBelow60" description="time weight is linear below 60 seconds" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateTopicScore_timeWeight_linearBelow60 -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d]" started-at="2026-01-21T17:50:13 GMT" name="setUp" finished-at="2026-01-21T17:50:13 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+      </class> <!-- com.gradepath.content.profiling.algorithm.InterestScorerTest -->
+      <class name="com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest">
+        <test-method signature="analyzeJourney_emptyTopicTags_noError()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="analyzeJourney_emptyTopicTags_noError" description="analyzeJourney with empty topic tags does not throw error" finished-at="2026-01-21T17:50:14 GMT" duration-ms="10" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- analyzeJourney_emptyTopicTags_noError -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="analyzeJourney_tracksTopicTags()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="analyzeJourney_tracksTopicTags" description="analyzeJourney tracks topic tags for user" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- analyzeJourney_tracksTopicTags -->
+        <test-method signature="analyzeJourney_nullTopicTags_noError()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="analyzeJourney_nullTopicTags_noError" description="analyzeJourney with null topic tags does not throw error" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- analyzeJourney_nullTopicTags_noError -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="calculateUniqueTopicRatio_diverseContent()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="calculateUniqueTopicRatio_diverseContent" description="calculateUniqueTopicRatio returns 1.0 for diverse content" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateUniqueTopicRatio_diverseContent -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="calculateUniqueTopicRatio_repetitiveContent()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="calculateUniqueTopicRatio_repetitiveContent" description="calculateUniqueTopicRatio returns 0.2 for repetitive content" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateUniqueTopicRatio_repetitiveContent -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="calculateUniqueTopicRatio_zeroContent_noDivisionByZero()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="calculateUniqueTopicRatio_zeroContent_noDivisionByZero" description="calculateUniqueTopicRatio returns 0 when no content consumed" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateUniqueTopicRatio_zeroContent_noDivisionByZero -->
+        <test-method signature="clearTransitions_clearsAll()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="clearTransitions_clearsAll" description="clearTransitions clears all transition data" finished-at="2026-01-21T17:50:14 GMT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clearTransitions_clearsAll -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="clearUserTopics_clearsAll()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="clearUserTopics_clearsAll" description="clearUserTopics clears all user topic data" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clearUserTopics_clearsAll -->
+        <test-method signature="getTransitionMatrix_returnsImmutable()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="getTransitionMatrix_returnsImmutable" description="getTransitionMatrix returns unmodifiable map" finished-at="2026-01-21T17:50:14 GMT" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getTransitionMatrix_returnsImmutable -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getUserTopics_returnsImmutable()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="getUserTopics_returnsImmutable" description="getUserTopics returns unmodifiable set" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getUserTopics_returnsImmutable -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="predictNext_noTransitions_emptyList()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="predictNext_noTransitions_emptyList" description="predictNext returns empty list when no transitions exist" finished-at="2026-01-21T17:50:14 GMT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- predictNext_noTransitions_emptyList -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="predictNext_nullFromContent_emptyList()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="predictNext_nullFromContent_emptyList" description="predictNext returns empty list for null fromContent" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- predictNext_nullFromContent_emptyList -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="predictNext_withTransitions()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="predictNext_withTransitions" description="predictNext returns top 3 predictions by frequency" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- predictNext_withTransitions -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="trackTransition_incrementsFrequency()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="trackTransition_incrementsFrequency" description="trackTransition increments frequency for same transition" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- trackTransition_incrementsFrequency -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="trackTransition_newTransition_createsEntry()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="trackTransition_newTransition_createsEntry" description="trackTransition creates new entry for first transition" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- trackTransition_newTransition_createsEntry -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="transitionProbability_calculation()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="transitionProbability_calculation" description="transition probability is calculated correctly" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- transitionProbability_calculation -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="updateCommonPaths_filtersByThreshold()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="updateCommonPaths_filtersByThreshold" description="updateCommonPaths filters by minimum threshold" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateCommonPaths_filtersByThreshold -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="updateCommonPaths_limitsToTop20()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="updateCommonPaths_limitsToTop20" description="updateCommonPaths limits to top 20 paths" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateCommonPaths_limitsToTop20 -->
+        <test-method signature="updateCommonPaths_sortsByFrequency()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="updateCommonPaths_sortsByFrequency" description="updateCommonPaths sorts transitions by frequency descending" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateCommonPaths_sortsByFrequency -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+      </class> <!-- com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest -->
+      <class name="com.gradepath.content.profiling.algorithm.EngagementClassifierTest">
+        <test-method signature="classify_casualBrowser()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="classify_casualBrowser" description="short session with few content = casual_browser" finished-at="2026-01-21T17:50:14 GMT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- classify_casualBrowser -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="classify_deepLearner()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="classify_deepLearner" description="high time per content = deep_learner" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- classify_deepLearner -->
+        <test-method signature="classify_explorer()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="classify_explorer" description="low time per content and moderate duration = casual_browser (takes priority)" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- classify_explorer -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="classify_longSessionWithManyContent_bingeConsumer()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="classify_longSessionWithManyContent_bingeConsumer" description="long session with many content = binge_consumer (takes priority over deep_learner)" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- classify_longSessionWithManyContent_bingeConsumer -->
+        <test-method signature="classify_moderateBehavior()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="classify_moderateBehavior" description="moderate behavior = casual_browser with lower confidence" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- classify_moderateBehavior -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getSessionMetrics_durationZero()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="getSessionMetrics_durationZero" description="session with zero duration is handled gracefully" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getSessionMetrics_durationZero -->
+        <test-method signature="getSessionMetrics_contentZero()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="getSessionMetrics_contentZero" description="session with zero content count is handled gracefully" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getSessionMetrics_contentZero -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="updateBasedOnTopicDiversity_highRatio_explorer()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="updateBasedOnTopicDiversity_highRatio_explorer" description="high topic ratio updates to explorer" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateBasedOnTopicDiversity_highRatio_explorer -->
+        <test-method signature="getUserSessions_returnsImmutable()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="getUserSessions_returnsImmutable" description="getUserSessions returns immutable list" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getUserSessions_returnsImmutable -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="updateBasedOnTopicDiversity_nullEngagement_noUpdate()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="updateBasedOnTopicDiversity_nullEngagement_noUpdate" description="null engagement returns early without update" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateBasedOnTopicDiversity_nullEngagement_noUpdate -->
+        <test-method signature="updateBasedOnTopicDiversity_lowRatio_specialist()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="updateBasedOnTopicDiversity_lowRatio_specialist" description="low topic ratio with high content = specialist" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateBasedOnTopicDiversity_lowRatio_specialist -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="updateEngagement_firstSession_unknown()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="updateEngagement_firstSession_unknown" description="single session results in unknown classification" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateEngagement_firstSession_unknown -->
+        <test-method signature="updateEngagement_maxSessionsPerUser()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="updateEngagement_maxSessionsPerUser" description="max 10 sessions per user are kept" finished-at="2026-01-21T17:50:14 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateEngagement_maxSessionsPerUser -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="updateEngagement_threeSessions_classifies()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="updateEngagement_threeSessions_classifies" description="three sessions results in classification" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateEngagement_threeSessions_classifies -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="updateEngagement_twoSessions_classifies()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="updateEngagement_twoSessions_classifies" description="two sessions results in classification (not unknown)" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateEngagement_twoSessions_classifies -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a]" started-at="2026-01-21T17:50:14 GMT" name="setUp" finished-at="2026-01-21T17:50:14 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+      </class> <!-- com.gradepath.content.profiling.algorithm.EngagementClassifierTest -->
+    </test> <!-- Unit Tests -->
+    <test started-at="2026-01-21T17:50:14 GMT" name="Integration Tests" finished-at="2026-01-21T17:50:19 GMT" duration-ms="5418">
+      <class name="com.gradepath.content.profiling.ProfilingServiceIntegrationTest$TestcontainersInitializer">
+        <test-method is-config="true" signature="stopContainers()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest$TestcontainersInitializer@346e5cc]" started-at="2026-01-21T17:50:19 GMT" name="stopContainers" finished-at="2026-01-21T17:50:20 GMT" duration-ms="315" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopContainers -->
+      </class> <!-- com.gradepath.content.profiling.ProfilingServiceIntegrationTest$TestcontainersInitializer -->
+      <class name="com.gradepath.content.profiling.ProfilingServiceIntegrationTest">
+        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:14 GMT" name="springTestContextBeforeTestClass" finished-at="2026-01-21T17:50:14 GMT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:14 GMT" name="springTestContextPrepareTestInstance" finished-at="2026-01-21T17:50:19 GMT" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="5076" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="4" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.oldInterests_decayWhenNewEventProcessed() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="setUp" finished-at="2026-01-21T17:50:19 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="oldInterests_decayWhenNewEventProcessed()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="oldInterests_decayWhenNewEventProcessed" description="Old interests decay when new event is processed" finished-at="2026-01-21T17:50:19 GMT" duration-ms="229" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- oldInterests_decayWhenNewEventProcessed -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="5" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.oldInterests_decayWhenNewEventProcessed() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processEventWithMissingTopic_doesNotCrash() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="processEventWithMissingTopic_doesNotCrash()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="processEventWithMissingTopic_doesNotCrash" description="Event with missing topic does not crash the service" finished-at="2026-01-21T17:50:19 GMT" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processEventWithMissingTopic_doesNotCrash -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="setUp" finished-at="2026-01-21T17:50:19 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processEventWithMissingTopic_doesNotCrash() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processInvalidJsonEvent_doesNotCrash()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="setUp" finished-at="2026-01-21T17:50:19 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="processInvalidJsonEvent_doesNotCrash()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="processInvalidJsonEvent_doesNotCrash" description="Invalid JSON event does not crash the service" finished-at="2026-01-21T17:50:19 GMT" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processInvalidJsonEvent_doesNotCrash -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processInvalidJsonEvent_doesNotCrash()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_createsProfileInDatabase() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="processJourneyEvent_endToEnd_createsProfileInDatabase()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="processJourneyEvent_endToEnd_createsProfileInDatabase" description="Process journey event end-to-end and persist to database" finished-at="2026-01-21T17:50:19 GMT" duration-ms="9" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processJourneyEvent_endToEnd_createsProfileInDatabase -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="setUp" finished-at="2026-01-21T17:50:19 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_createsProfileInDatabase() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_emitsKafkaMessage() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="processJourneyEvent_endToEnd_emitsKafkaMessage()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="processJourneyEvent_endToEnd_emitsKafkaMessage" description="Process journey event and emit Kafka message" finished-at="2026-01-21T17:50:19 GMT" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processJourneyEvent_endToEnd_emitsKafkaMessage -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="setUp" finished-at="2026-01-21T17:50:19 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processJourneyEvent_endToEnd_emitsKafkaMessage() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processMultipleJourneyEvents_accumulatesProfile() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="processMultipleJourneyEvents_accumulatesProfile()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="processMultipleJourneyEvents_accumulatesProfile" description="Process multiple journey events and accumulate profile data" finished-at="2026-01-21T17:50:19 GMT" duration-ms="17" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processMultipleJourneyEvents_accumulatesProfile -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="setUp" finished-at="2026-01-21T17:50:19 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processMultipleJourneyEvents_accumulatesProfile() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processSessionAndJourneyEvents_combinesData() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="processSessionAndJourneyEvents_combinesData()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="processSessionAndJourneyEvents_combinesData" description="Process both session and journey events and combine data" finished-at="2026-01-21T17:50:19 GMT" duration-ms="11" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processSessionAndJourneyEvents_combinesData -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="setUp" finished-at="2026-01-21T17:50:19 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processSessionAndJourneyEvents_combinesData() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processSessionEvent_endToEnd_updatesSessionCount() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="processSessionEvent_endToEnd_updatesSessionCount()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="processSessionEvent_endToEnd_updatesSessionCount" description="Process session end event and update session count" finished-at="2026-01-21T17:50:19 GMT" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- processSessionEvent_endToEnd_updatesSessionCount -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="setUp" finished-at="2026-01-21T17:50:19 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.processSessionEvent_endToEnd_updatesSessionCount() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextBeforeTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.profile_persistsAcrossRetrieval() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="profile_persistsAcrossRetrieval()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="profile_persistsAcrossRetrieval" description="Profile persists across database retrievals" finished-at="2026-01-21T17:50:19 GMT" duration-ms="10" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- profile_persistsAcrossRetrieval -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="setUp" finished-at="2026-01-21T17:50:19 GMT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextAfterTestMethod" finished-at="2026-01-21T17:50:19 GMT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gradepath.content.profiling.ProfilingServiceIntegrationTest.profile_persistsAcrossRetrieval() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:com.gradepath.content.profiling.ProfilingServiceIntegrationTest@95f1422]" started-at="2026-01-21T17:50:19 GMT" name="springTestContextAfterTestClass" finished-at="2026-01-21T17:50:19 GMT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- com.gradepath.content.profiling.ProfilingServiceIntegrationTest -->
+    </test> <!-- Integration Tests -->
+  </suite> <!-- ProfilingSuite -->
+</testng-results>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InterestScorer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">content-service</a> &gt; <a href="index.source.html" class="el_package">com.gradepath.content.profiling.algorithm</a> &gt; <span class="el_source">InterestScorer.java</span></div><h1>InterestScorer.java</h1><pre class="source lang-java linenums">package com.gradepath.content.profiling.algorithm;
+
+import com.gradepath.content.recommendation.profile.BehavioralProfile;
+import com.gradepath.content.recommendation.profile.BehavioralProfile.InterestScore;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Calculates and updates interest scores based on user content interactions.
+ * Ported from TypeScript InterestScorer.
+ *
+ * Algorithm:
+ * - Base score of 10 per interaction
+ * - Action multipliers: started=1.0, completed=2.0, revisited=3.0, abandoned=0.5
+ * - Time weight: normalizes time spent, max 1.5x multiplier
+ * - Decay: 7-day half-life for old scores
+ * - EMA: Exponential moving average with alpha=0.3 for score updates
+ */
+@Component
+<span class="fc" id="L25">@Slf4j</span>
+<span class="fc" id="L26">public class InterestScorer {</span>
+
+    // Action multipliers based on TikTok-style weights
+    private static final double MULTIPLIER_STARTED = 1.0;
+    private static final double MULTIPLIER_COMPLETED = 2.0;
+    private static final double MULTIPLIER_REVISITED = 3.0;
+    private static final double MULTIPLIER_ABANDONED = 0.5;
+
+    // Decay function: half-life of 7 days
+    private static final double HALF_LIFE_DAYS = 7.0;
+
+    // EMA alpha for score updates
+    private static final double EMA_ALPHA = 0.3;
+
+    // Minimum score threshold
+    private static final double MIN_SCORE_THRESHOLD = 1.0;
+
+    // Base value for each interaction
+    private static final double BASE_VALUE = 10.0;
+
+    /**
+     * Update interests based on a content journey event
+     */
+    public void updateInterests(BehavioralProfile profile, RawJourneyEvent event) {
+<span class="fc" id="L50">        var topicTags = event.topicTags();</span>
+<span class="fc bfc" id="L51" title="All 4 branches covered.">        if (topicTags == null || topicTags.isEmpty()) {</span>
+<span class="fc" id="L52">            return;</span>
+        }
+
+<span class="fc" id="L55">        var action = event.action();</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        var timeInContentSeconds = event.timeInContentSeconds() != null</span>
+<span class="fc" id="L57">            ? event.timeInContentSeconds()</span>
+<span class="fc" id="L58">            : 0;</span>
+
+        // Update interest for each topic tag
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        for (String topic : topicTags) {</span>
+<span class="fc" id="L62">            double actionMultiplier = getActionMultiplier(action);</span>
+<span class="fc" id="L63">            double timeWeight = Math.min(timeInContentSeconds / 60.0, 1.5);</span>
+<span class="fc" id="L64">            double recencyDecay = 1.0; // Fresh events have no decay</span>
+
+<span class="fc" id="L66">            double score = BASE_VALUE * actionMultiplier * timeWeight * recencyDecay;</span>
+
+<span class="fc" id="L68">            updateTopicScore(profile, topic, score);</span>
+<span class="fc" id="L69">        }</span>
+
+        // Apply decay to all interests
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if (profile.getInterests() != null) {</span>
+<span class="fc" id="L73">            applyDecay(profile.getInterests());</span>
+        }
+<span class="fc" id="L75">    }</span>
+
+    /**
+     * Get the action multiplier for a given action type
+     */
+    private double getActionMultiplier(String action) {
+<span class="fc bfc" id="L81" title="All 5 branches covered.">        return switch (action.toLowerCase()) {</span>
+<span class="fc" id="L82">            case &quot;started&quot; -&gt; MULTIPLIER_STARTED;</span>
+<span class="fc" id="L83">            case &quot;completed&quot; -&gt; MULTIPLIER_COMPLETED;</span>
+<span class="fc" id="L84">            case &quot;revisited&quot; -&gt; MULTIPLIER_REVISITED;</span>
+<span class="fc" id="L85">            case &quot;abandoned&quot; -&gt; MULTIPLIER_ABANDONED;</span>
+<span class="fc" id="L86">            default -&gt; 1.0;</span>
+        };
+    }
+
+    /**
+     * Update a single topic score using exponential moving average
+     */
+    private void updateTopicScore(BehavioralProfile profile, String topic, double addedScore) {
+<span class="fc" id="L94">        Map&lt;String, InterestScore&gt; interests = profile.getInterests();</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        if (interests == null) {</span>
+<span class="nc" id="L96">            interests = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L97">            profile.setInterests(interests);</span>
+        }
+
+<span class="fc" id="L100">        InterestScore existing = interests.get(topic);</span>
+
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        if (existing != null) {</span>
+            // Combine with existing score using exponential moving average
+<span class="fc" id="L104">            double newScore = existing.getScore() * (1 - EMA_ALPHA) + addedScore * EMA_ALPHA;</span>
+<span class="fc" id="L105">            existing.setScore(newScore);</span>
+<span class="fc" id="L106">            existing.setLastUpdated(Instant.now());</span>
+<span class="fc" id="L107">        } else {</span>
+<span class="fc" id="L108">            InterestScore newInterest = InterestScore.builder()</span>
+<span class="fc" id="L109">                .topic(topic)</span>
+<span class="fc" id="L110">                .score(addedScore)</span>
+<span class="fc" id="L111">                .lastUpdated(Instant.now())</span>
+<span class="fc" id="L112">                .build();</span>
+<span class="fc" id="L113">            interests.put(topic, newInterest);</span>
+        }
+<span class="fc" id="L115">    }</span>
+
+    /**
+     * Apply time-based decay to all interest scores
+     * Uses 7-day half-life: score = score * 0.5^(days/7)
+     */
+    private void applyDecay(Map&lt;String, InterestScore&gt; interests) {
+<span class="fc" id="L122">        Instant now = Instant.now();</span>
+
+        // Apply decay
+<span class="fc" id="L125">        interests.values().forEach(interest -&gt; {</span>
+<span class="fc" id="L126">            long daysSinceUpdate = Duration.between(interest.getLastUpdated(), now).toDays();</span>
+<span class="fc" id="L127">            double decayFactor = Math.pow(0.5, daysSinceUpdate / HALF_LIFE_DAYS);</span>
+<span class="fc" id="L128">            double newScore = interest.getScore() * decayFactor;</span>
+<span class="fc" id="L129">            interest.setScore(newScore);</span>
+<span class="fc" id="L130">        });</span>
+
+        // Remove interests that have decayed below threshold
+<span class="fc bfc" id="L133" title="All 2 branches covered.">        interests.entrySet().removeIf(entry -&gt; entry.getValue().getScore() &lt; MIN_SCORE_THRESHOLD);</span>
+<span class="fc" id="L134">    }</span>
+
+    /**
+     * Record for raw journey events from NestJS
+     */
+<span class="fc" id="L139">    public record RawJourneyEvent(</span>
+        String journeyId,
+        String userId,
+        String sessionId,
+        String contentId,
+        String contentType,
+        String action,
+        Integer sequencePosition,
+        Integer timeInContentSeconds,
+        java.util.List&lt;String&gt; topicTags,
+        String difficultyLevel,
+        String previousContentId,
+        Long timestamp
+    ) {}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

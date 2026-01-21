@@ -1,0 +1,565 @@
+<html>
+<head>
+<title>TestNG:  Unit Tests</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Unit Tests</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>97/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Jan 21 17:50:12 GMT 2026</td>
+</tr>
+<tr><td>Total time:</td><td>1 seconds (1561 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td>unit </td>
+</tr><tr>
+<td>Excluded groups:</td><td>slow integration </td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.updateInterests_nullTopicTags_returnsEarly()'><b>updateInterests_nullTopicTags_returnsEarly</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: updateInterests with null topic tags returns early</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.calculateUniqueTopicRatio_zeroContent_noDivisionByZero()'><b>calculateUniqueTopicRatio_zeroContent_noDivisionByZero</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: calculateUniqueTopicRatio returns 0 when no content consumed</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.classify_deepLearner()'><b>classify_deepLearner</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: high time per content = deep_learner</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.updateInterests_emptyTopicTags_returnsEarly()'><b>updateInterests_emptyTopicTags_returnsEarly</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: updateInterests with empty topic tags returns early</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest.deserializeProfile_validJson_returnsProfile()'><b>deserializeProfile_validJson_returnsProfile</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.getActionMultiplier_caseInsensitive()'><b>getActionMultiplier_caseInsensitive</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: action multiplier is case insensitive</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest.saveProfile_validProfile_savesEntity()'><b>saveProfile_validProfile_savesEntity</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.applyDecay_lowScore_isRemoved()'><b>applyDecay_lowScore_isRemoved</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: interest below 1.0 threshold is removed after decay</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.updateTopicScore_timeWeight_cappedAt1_5()'><b>updateTopicScore_timeWeight_cappedAt1_5</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: time weight is capped at 1.5 for 180+ seconds</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.calculateUniqueTopicRatio_repetitiveContent()'><b>calculateUniqueTopicRatio_repetitiveContent</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: calculateUniqueTopicRatio returns 0.2 for repetitive content</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processRawBehavioralEvent_malformedJson_logsError()'><b>processRawBehavioralEvent_malformedJson_logsError</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest.findByUserId_aliasWorks()'><b>findByUserId_aliasWorks</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.getSessionMetrics_durationZero()'><b>getSessionMetrics_durationZero</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: session with zero duration is handled gracefully</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.getListValue_arrayField_returnsList()'><b>getListValue_arrayField_returnsList</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.classify_longSessionWithManyContent_bingeConsumer()'><b>classify_longSessionWithManyContent_bingeConsumer</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: long session with many content = binge_consumer (takes priority over deep_learner)</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.trackTransition_incrementsFrequency()'><b>trackTransition_incrementsFrequency</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: trackTransition increments frequency for same transition</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.classify_explorer()'><b>classify_explorer</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: low time per content and moderate duration = casual_browser (takes priority)</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.updateEngagement_threeSessions_classifies()'><b>updateEngagement_threeSessions_classifies</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: three sessions results in classification</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest.saveProfile_serializationError_logsError()'><b>saveProfile_serializationError_logsError</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.getUserTopics_returnsImmutable()'><b>getUserTopics_returnsImmutable</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: getUserTopics returns unmodifiable set</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.getActionMultiplier_completed_returns2_0()'><b>getActionMultiplier_completed_returns2_0</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: action 'completed' returns 2.0 multiplier</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.clearUserTopics_clearsAll()'><b>clearUserTopics_clearsAll</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: clearUserTopics clears all user topic data</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.getOrCreateProfile_fromCache()'><b>getOrCreateProfile_fromCache</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.updateBasedOnTopicDiversity_highRatio_explorer()'><b>updateBasedOnTopicDiversity_highRatio_explorer</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: high topic ratio updates to explorer</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest.getProfile_existingUser_returnsProfile()'><b>getProfile_existingUser_returnsProfile</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.analyzeJourney_tracksTopicTags()'><b>analyzeJourney_tracksTopicTags</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: analyzeJourney tracks topic tags for user</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest.cleanupOldProfiles_withNegativeKeepCount()'><b>cleanupOldProfiles_withNegativeKeepCount</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest.cleanupOldProfiles_placeholder()'><b>cleanupOldProfiles_placeholder</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileTest.ContentTransitionBuilder_createsValid()'><b>ContentTransitionBuilder_createsValid</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.predictNext_noTransitions_emptyList()'><b>predictNext_noTransitions_emptyList</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: predictNext returns empty list when no transitions exist</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processRawBehavioralEvent_nullTopic_warnsAndReturns()'><b>processRawBehavioralEvent_nullTopic_warnsAndReturns</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.parseJourneyEvent_missingOptionalFields()'><b>parseJourneyEvent_missingOptionalFields</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.parseJourneyEvent_allFieldsPresent()'><b>parseJourneyEvent_allFieldsPresent</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processSessionEvent_missingContentCount_defaultsTo0()'><b>processSessionEvent_missingContentCount_defaultsTo0</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.getActionMultiplier_started_returns1_0()'><b>getActionMultiplier_started_returns1_0</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: action 'started' returns 1.0 multiplier</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.classify_casualBrowser()'><b>classify_casualBrowser</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: short session with few content = casual_browser</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileTest.builder_createsValidProfile()'><b>builder_createsValidProfile</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.emitProfileUpdate_kafkaFailure_logsWarning()'><b>emitProfileUpdate_kafkaFailure_logsWarning</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.updateInterests_newTopic_createsScore()'><b>updateInterests_newTopic_createsScore</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: updateInterests with new topic creates score</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.applyDecay_7DaysHalfLife()'><b>applyDecay_7DaysHalfLife</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: interest decays to half after 7 days</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest.getProfile_nonExistingUser_returnsEmpty()'><b>getProfile_nonExistingUser_returnsEmpty</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.getOrCreateProfile_newProfile()'><b>getOrCreateProfile_newProfile</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileTest.builder_defaultValues_emptyCollections()'><b>builder_defaultValues_emptyCollections</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.getActionMultiplier_unknown_returns1_0()'><b>getActionMultiplier_unknown_returns1_0</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: unknown action returns 1.0 default multiplier</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest.deserializeProfile_invalidJson_logsError()'><b>deserializeProfile_invalidJson_logsError</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.updateEngagement_twoSessions_classifies()'><b>updateEngagement_twoSessions_classifies</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: two sessions results in classification (not unknown)</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.getUserSessions_returnsImmutable()'><b>getUserSessions_returnsImmutable</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: getUserSessions returns immutable list</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.updateBasedOnTopicDiversity_nullEngagement_noUpdate()'><b>updateBasedOnTopicDiversity_nullEngagement_noUpdate</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: null engagement returns early without update</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processRawBehavioralEvent_unknownTopic_warnsAndReturns()'><b>processRawBehavioralEvent_unknownTopic_warnsAndReturns</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.analyzeJourney_emptyTopicTags_noError()'><b>analyzeJourney_emptyTopicTags_noError</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: analyzeJourney with empty topic tags does not throw error</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.analyzeJourney_nullTopicTags_noError()'><b>analyzeJourney_nullTopicTags_noError</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: analyzeJourney with null topic tags does not throw error</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.calculateUniqueTopicRatio_diverseContent()'><b>calculateUniqueTopicRatio_diverseContent</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: calculateUniqueTopicRatio returns 1.0 for diverse content</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.getListValue_nonArrayField_returnsEmptyList()'><b>getListValue_nonArrayField_returnsEmptyList</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processJourneyEvent_createsNewProfile()'><b>processJourneyEvent_createsNewProfile</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.predictNext_nullFromContent_emptyList()'><b>predictNext_nullFromContent_emptyList</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: predictNext returns empty list for null fromContent</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.trackTransition_newTransition_createsEntry()'><b>trackTransition_newTransition_createsEntry</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: trackTransition creates new entry for first transition</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.updateEngagement_firstSession_unknown()'><b>updateEngagement_firstSession_unknown</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: single session results in unknown classification</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.updateEngagement_maxSessionsPerUser()'><b>updateEngagement_maxSessionsPerUser</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: max 10 sessions per user are kept</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.updateTopicScore_timeWeight_linearBelow60()'><b>updateTopicScore_timeWeight_linearBelow60</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: time weight is linear below 60 seconds</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.getTransitionMatrix_returnsImmutable()'><b>getTransitionMatrix_returnsImmutable</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: getTransitionMatrix returns unmodifiable map</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.updateCommonPaths_limitsToTop20()'><b>updateCommonPaths_limitsToTop20</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: updateCommonPaths limits to top 20 paths</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.applyDecay_freshEvent_noDecayApplied()'><b>applyDecay_freshEvent_noDecayApplied</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: fresh event has no decay applied</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileTest.PeakWindowBuilder_createsValid()'><b>PeakWindowBuilder_createsValid</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.updateBasedOnTopicDiversity_lowRatio_specialist()'><b>updateBasedOnTopicDiversity_lowRatio_specialist</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: low topic ratio with high content = specialist</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.transitionProbability_calculation()'><b>transitionProbability_calculation</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: transition probability is calculated correctly</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.updateInterests_existingTopic_appliesEMA()'><b>updateInterests_existingTopic_appliesEMA</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: updateInterests with existing topic applies EMA</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileTest.lombok_toString_works()'><b>lombok_toString_works</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.getActionMultiplier_abandoned_returns0_5()'><b>getActionMultiplier_abandoned_returns0_5</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: action 'abandoned' returns 0.5 multiplier</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.clearTransitions_clearsAll()'><b>clearTransitions_clearsAll</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: clearTransitions clears all transition data</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest.saveProfile_nullTimestamp_usesNow()'><b>saveProfile_nullTimestamp_usesNow</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.predictNext_withTransitions()'><b>predictNext_withTransitions</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: predictNext returns top 3 predictions by frequency</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.updateCommonPaths_sortsByFrequency()'><b>updateCommonPaths_sortsByFrequency</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: updateCommonPaths sorts transitions by frequency descending</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.updateInterests_multipleTopics_allUpdated()'><b>updateInterests_multipleTopics_allUpdated</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: multiple topics are all updated</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.getValue_nullField_returnsNull()'><b>getValue_nullField_returnsNull</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.applyDecay_removesBelowThreshold()'><b>applyDecay_removesBelowThreshold</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: interest below threshold is removed</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.getListValue_missingField_returnsEmptyList()'><b>getListValue_missingField_returnsEmptyList</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processJourneyEvent_savesProfile()'><b>processJourneyEvent_savesProfile</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileTest.lombok_gettersSetters_work()'><b>lombok_gettersSetters_work</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.getValue_missingField_returnsNull()'><b>getValue_missingField_returnsNull</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processJourneyEvent_updatesExistingProfile()'><b>processJourneyEvent_updatesExistingProfile</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processSessionEvent_sessionEnd_processes()'><b>processSessionEvent_sessionEnd_processes</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileTest.lombok_equalsHashCode_work()'><b>lombok_equalsHashCode_work</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processSessionEvent_missingDuration_defaultsTo0()'><b>processSessionEvent_missingDuration_defaultsTo0</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processJourneyEvent_emitsProfileUpdate()'><b>processJourneyEvent_emitsProfileUpdate</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest.updateCommonPaths_filtersByThreshold()'><b>updateCommonPaths_filtersByThreshold</b><br>Test class: com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest<br>Test method: updateCommonPaths filters by minimum threshold</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.JourneyAnalyzerTest@7551da2a</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest.getProfile_uuidOverload_works()'><b>getProfile_uuidOverload_works</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileServiceTest@282aea3c</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.getActionMultiplier_revisited_returns3_0()'><b>getActionMultiplier_revisited_returns3_0</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: action 'revisited' returns 3.0 multiplier</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileTest.InterestScoreBuilder_createsValid()'><b>InterestScoreBuilder_createsValid</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processRawBehavioralEvent_sessionLifecycle_processesEvent()'><b>processRawBehavioralEvent_sessionLifecycle_processesEvent</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.getSessionMetrics_contentZero()'><b>getSessionMetrics_contentZero</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: session with zero content count is handled gracefully</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processRawBehavioralEvent_contentJourney_processesEvent()'><b>processRawBehavioralEvent_contentJourney_processesEvent</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.EngagementClassifierTest.classify_moderateBehavior()'><b>classify_moderateBehavior</b><br>Test class: com.gradepath.content.profiling.algorithm.EngagementClassifierTest<br>Test method: moderate behavior = casual_browser with lower confidence</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.EngagementClassifierTest@432034a</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.getOrCreateProfile_fromDatabase()'><b>getOrCreateProfile_fromDatabase</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.applyDecay_14Days_quarterRemaining()'><b>applyDecay_14Days_quarterRemaining</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: interest decays to quarter after 14 days</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.ProfilingServiceTest.processSessionEvent_sessionStart_ignored()'><b>processSessionEvent_sessionStart_ignored</b><br>Test class: com.gradepath.content.profiling.ProfilingServiceTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.ProfilingServiceTest@787508ca</td></tr>
+<tr>
+<td title='com.gradepath.content.profiling.algorithm.InterestScorerTest.updateInterests_nullTimeInContent_defaultsTo0()'><b>updateInterests_nullTimeInContent_defaultsTo0</b><br>Test class: com.gradepath.content.profiling.algorithm.InterestScorerTest<br>Test method: null timeInContent results in score below threshold and is removed</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.profiling.algorithm.InterestScorerTest@68ba310d</td></tr>
+<tr>
+<td title='com.gradepath.content.recommendation.profile.BehavioralProfileTest.EngagementPatternBuilder_createsValid()'><b>EngagementPatternBuilder_createsValid</b><br>Test class: com.gradepath.content.recommendation.profile.BehavioralProfileTest</td>
+<td></td>
+<td>0</td>
+<td>com.gradepath.content.recommendation.profile.BehavioralProfileTest@54a5799f</td></tr>
+</table><p>
+</body>
+</html>

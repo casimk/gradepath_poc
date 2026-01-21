@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SkillLevel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">content-service</a> &gt; <a href="index.source.html" class="el_package">com.gradepath.content.profile.model</a> &gt; <span class="el_source">SkillLevel.java</span></div><h1>SkillLevel.java</h1><pre class="source lang-java linenums">package com.gradepath.content.profile.model;
+
+import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.UUID;
+
+@Entity
+@Table(name = &quot;skill_levels&quot;, uniqueConstraints = {
+    @UniqueConstraint(columnNames = {&quot;user_id&quot;, &quot;topic&quot;})
+})
+@EntityListeners(AuditingEntityListener.class)
+public class SkillLevel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = &quot;user_id&quot;, nullable = false)
+    private User user;
+
+    @Column(name = &quot;topic&quot;, nullable = false, length = 100)
+    private String topic;
+
+    @Column(name = &quot;level&quot;, nullable = false)
+    private Integer level;
+
+    @Column(name = &quot;confidence_score&quot;, precision = 5, scale = 2)
+    private BigDecimal confidenceScore;
+
+    @Column(name = &quot;last_assessed_at&quot;)
+    private Instant lastAssessedAt;
+
+    @CreatedDate
+    @Column(name = &quot;updated_at&quot;, nullable = false)
+    private Instant updatedAt;
+
+    // Constructors
+<span class="fc" id="L44">    public SkillLevel() {}</span>
+
+<span class="nc" id="L46">    private SkillLevel(Builder builder) {</span>
+<span class="nc" id="L47">        this.id = builder.id;</span>
+<span class="nc" id="L48">        this.user = builder.user;</span>
+<span class="nc" id="L49">        this.topic = builder.topic;</span>
+<span class="nc" id="L50">        this.level = builder.level;</span>
+<span class="nc" id="L51">        this.confidenceScore = builder.confidenceScore;</span>
+<span class="nc" id="L52">        this.lastAssessedAt = builder.lastAssessedAt;</span>
+<span class="nc" id="L53">    }</span>
+
+    public static Builder builder() {
+<span class="nc" id="L56">        return new Builder();</span>
+    }
+
+    // Getters and Setters
+<span class="nc" id="L60">    public UUID getId() { return id; }</span>
+<span class="nc" id="L61">    public void setId(UUID id) { this.id = id; }</span>
+
+<span class="nc" id="L63">    public User getUser() { return user; }</span>
+<span class="nc" id="L64">    public void setUser(User user) { this.user = user; }</span>
+
+<span class="nc" id="L66">    public String getTopic() { return topic; }</span>
+<span class="nc" id="L67">    public void setTopic(String topic) { this.topic = topic; }</span>
+
+<span class="nc" id="L69">    public Integer getLevel() { return level; }</span>
+<span class="nc" id="L70">    public void setLevel(Integer level) { this.level = level; }</span>
+
+<span class="nc" id="L72">    public BigDecimal getConfidenceScore() { return confidenceScore; }</span>
+<span class="nc" id="L73">    public void setConfidenceScore(BigDecimal confidenceScore) { this.confidenceScore = confidenceScore; }</span>
+
+<span class="nc" id="L75">    public Instant getLastAssessedAt() { return lastAssessedAt; }</span>
+<span class="nc" id="L76">    public void setLastAssessedAt(Instant lastAssessedAt) { this.lastAssessedAt = lastAssessedAt; }</span>
+
+<span class="nc" id="L78">    public Instant getUpdatedAt() { return updatedAt; }</span>
+<span class="nc" id="L79">    public void setUpdatedAt(Instant updatedAt) { this.updatedAt = updatedAt; }</span>
+
+    // Builder class
+<span class="nc" id="L82">    public static class Builder {</span>
+        private UUID id;
+        private User user;
+        private String topic;
+        private Integer level;
+        private BigDecimal confidenceScore;
+        private Instant lastAssessedAt;
+
+<span class="nc" id="L90">        public Builder id(UUID id) { this.id = id; return this; }</span>
+<span class="nc" id="L91">        public Builder user(User user) { this.user = user; return this; }</span>
+<span class="nc" id="L92">        public Builder topic(String topic) { this.topic = topic; return this; }</span>
+<span class="nc" id="L93">        public Builder level(Integer level) { this.level = level; return this; }</span>
+<span class="nc" id="L94">        public Builder confidenceScore(BigDecimal confidenceScore) { this.confidenceScore = confidenceScore; return this; }</span>
+<span class="nc" id="L95">        public Builder lastAssessedAt(Instant lastAssessedAt) { this.lastAssessedAt = lastAssessedAt; return this; }</span>
+
+        public SkillLevel build() {
+<span class="nc" id="L98">            return new SkillLevel(this);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

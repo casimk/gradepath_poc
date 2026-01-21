@@ -1,10 +1,10 @@
 services:
-  backend:
+  telemetry-gateway:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: telemetry-backend
-    hostname: backend
+    container_name: telemetry-gateway
+    hostname: telemetry-gateway
     depends_on:
       kafka:
         condition: service_started
@@ -26,7 +26,7 @@ services:
       retries: 3
       start_period: 40s
 
-  # NEW: PostgreSQL for Spring Boot content service
+  # NEW: PostgreSQL for Spring Boot Gradepath Core service
   postgres:
     image: postgres:16-alpine
     container_name: postgres
@@ -49,7 +49,7 @@ services:
       retries: 5
     restart: unless-stopped
 
-  # NEW: Redis for Spring Boot content service
+  # NEW: Redis for Spring Boot Gradepath Core service
   redis:
     image: redis:7-alpine
     container_name: redis
@@ -68,13 +68,13 @@ services:
       retries: 5
     restart: unless-stopped
 
-  # NEW: Spring Boot content service (Modulith)
-  content-service:
+  # NEW: Spring Boot Gradepath Core service (Modulith)
+  gradepath-core:
     build:
-      context: ./content-service
+      context: ./gradepath-core
       dockerfile: Dockerfile
-    container_name: content-service
-    hostname: content-service
+    container_name: gradepath-core
+    hostname: gradepath-core
     depends_on:
       postgres:
         condition: service_healthy

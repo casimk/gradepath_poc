@@ -13,7 +13,7 @@ import { SessionCacheService } from './redis/session-cache.service';
  * - Kafka emission of raw events (to be processed by Java Spring Modulith)
  *
  * All CPU-intensive profiling logic has been moved to:
- * content-service/src/main/java/com/gradepath/content/profiling/
+ * gradepath-core/src/main/java/com/gradepath/content/profiling/
  */
 @Module({
   imports: [

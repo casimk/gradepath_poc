@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContentController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">content-service</a> &gt; <a href="index.source.html" class="el_package">com.gradepath.content.content.controller</a> &gt; <span class="el_source">ContentController.java</span></div><h1>ContentController.java</h1><pre class="source lang-java linenums">package com.gradepath.content.content.controller;
+
+import com.gradepath.content.content.model.Content;
+import com.gradepath.content.content.service.ContentService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/api/v1/content&quot;)
+public class ContentController {
+
+    private final ContentService contentService;
+
+<span class="fc" id="L19">    public ContentController(ContentService contentService) {</span>
+<span class="fc" id="L20">        this.contentService = contentService;</span>
+<span class="fc" id="L21">    }</span>
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Content&gt; getContent(@PathVariable String id) {
+        try {
+<span class="nc" id="L26">            Content content = contentService.findById(id);</span>
+<span class="nc" id="L27">            return ResponseEntity.ok(content);</span>
+<span class="nc" id="L28">        } catch (IllegalArgumentException e) {</span>
+<span class="nc" id="L29">            return ResponseEntity.notFound().build();</span>
+        }
+    }
+
+    @GetMapping(&quot;/browse&quot;)
+    public ResponseEntity&lt;List&lt;Content&gt;&gt; browse() {
+<span class="nc" id="L35">        List&lt;Content&gt; content = contentService.findAll();</span>
+<span class="nc" id="L36">        return ResponseEntity.ok(content);</span>
+    }
+
+    @PostMapping
+    public ResponseEntity&lt;Content&gt; createContent(@RequestBody Content content) {
+<span class="nc" id="L41">        Content created = contentService.createContent(content);</span>
+<span class="nc" id="L42">        return ResponseEntity.status(HttpStatus.CREATED).body(created);</span>
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Content&gt; updateContent(@PathVariable String id, @RequestBody Content content) {
+        try {
+<span class="nc" id="L48">            Content updated = contentService.updateContent(id, content);</span>
+<span class="nc" id="L49">            return ResponseEntity.ok(updated);</span>
+<span class="nc" id="L50">        } catch (IllegalArgumentException e) {</span>
+<span class="nc" id="L51">            return ResponseEntity.notFound().build();</span>
+        }
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deleteContent(@PathVariable String id) {
+        try {
+<span class="nc" id="L58">            contentService.deleteContent(id);</span>
+<span class="nc" id="L59">            return ResponseEntity.noContent().build();</span>
+<span class="nc" id="L60">        } catch (IllegalArgumentException e) {</span>
+<span class="nc" id="L61">            return ResponseEntity.notFound().build();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

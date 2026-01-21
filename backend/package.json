@@ -1,7 +1,7 @@
 {
-  "name": "telemetry-backend",
+  "name": "telemetry-gateway",
   "version": "1.0.0",
-  "description": "NestJS API for User Telemetry with Kafka integration",
+  "description": "Telemetry Gateway API for User Telemetry with Kafka integration",
   "private": true,
   "scripts": {
     "build": "nest build",

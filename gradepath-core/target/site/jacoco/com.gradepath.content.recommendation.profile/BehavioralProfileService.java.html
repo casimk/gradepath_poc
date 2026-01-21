@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BehavioralProfileService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">content-service</a> &gt; <a href="index.source.html" class="el_package">com.gradepath.content.recommendation.profile</a> &gt; <span class="el_source">BehavioralProfileService.java</span></div><h1>BehavioralProfileService.java</h1><pre class="source lang-java linenums">package com.gradepath.content.recommendation.profile;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.Instant;
+import java.util.Optional;
+
+@Service
+<span class="fc" id="L13">@Slf4j</span>
+public class BehavioralProfileService {
+
+    private final BehavioralProfileRepository repository;
+    private final ObjectMapper objectMapper;
+
+    public BehavioralProfileService(
+            BehavioralProfileRepository repository,
+<span class="fc" id="L21">            ObjectMapper objectMapper) {</span>
+<span class="fc" id="L22">        this.repository = repository;</span>
+<span class="fc" id="L23">        this.objectMapper = objectMapper;</span>
+<span class="fc" id="L24">    }</span>
+
+    /**
+     * Store or update behavioral profile
+     */
+    @Transactional
+    public void saveProfile(BehavioralProfile profile) {
+        try {
+<span class="fc" id="L32">            String profileJson = objectMapper.writeValueAsString(profile);</span>
+
+<span class="fc" id="L34">            BehavioralProfileEntity entity = BehavioralProfileEntity.builder()</span>
+<span class="fc" id="L35">                .userId(profile.getUserId())</span>
+<span class="fc" id="L36">                .profileData(profileJson)</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">                .timestamp(profile.getTimestamp() != null ? profile.getTimestamp() : Instant.now())</span>
+<span class="fc" id="L38">                .build();</span>
+
+<span class="fc" id="L40">            repository.save(entity);</span>
+<span class="fc" id="L41">            log.info(&quot;Saved behavioral profile for user: {}&quot;, profile.getUserId());</span>
+<span class="fc" id="L42">        } catch (Exception e) {</span>
+<span class="fc" id="L43">            log.error(&quot;Error serializing behavioral profile for user: {}&quot;, profile.getUserId(), e);</span>
+<span class="fc" id="L44">        }</span>
+<span class="fc" id="L45">    }</span>
+
+    /**
+     * Get latest behavioral profile for user
+     */
+    public Optional&lt;BehavioralProfile&gt; getProfile(String userId) {
+<span class="fc" id="L51">        return repository.findFirstByUserIdOrderByTimestampDesc(userId)</span>
+<span class="fc" id="L52">            .map(this::deserializeProfile);</span>
+    }
+
+    /**
+     * Get latest behavioral profile for user (UUID overload)
+     */
+    public Optional&lt;BehavioralProfile&gt; getProfile(java.util.UUID userId) {
+<span class="fc" id="L59">        return getProfile(userId.toString());</span>
+    }
+
+    /**
+     * Alias for getProfile - used by ProfilingService
+     */
+    public Optional&lt;BehavioralProfile&gt; findByUserId(String userId) {
+<span class="fc" id="L66">        return getProfile(userId);</span>
+    }
+
+    private BehavioralProfile deserializeProfile(BehavioralProfileEntity entity) {
+        try {
+<span class="fc" id="L71">            return objectMapper.readValue(entity.getProfileData(), BehavioralProfile.class);</span>
+<span class="fc" id="L72">        } catch (JsonProcessingException e) {</span>
+<span class="fc" id="L73">            log.error(&quot;Error deserializing behavioral profile for user: {}&quot;, entity.getUserId(), e);</span>
+<span class="fc" id="L74">            return null;</span>
+        }
+    }
+
+    /**
+     * Clean up old profiles (keep only latest N per user)
+     */
+    @Transactional
+    public void cleanupOldProfiles(String userId, int keepCount) {
+        // Implementation would delete old profiles, keeping only the most recent N
+        // For now, this is a placeholder
+<span class="fc" id="L85">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

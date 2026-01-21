@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecommendationController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">content-service</a> &gt; <a href="index.source.html" class="el_package">com.gradepath.content.recommendation.controller</a> &gt; <span class="el_source">RecommendationController.java</span></div><h1>RecommendationController.java</h1><pre class="source lang-java linenums">package com.gradepath.content.recommendation.controller;
+
+import com.gradepath.content.recommendation.service.RecommendationService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
+
+@RestController
+@RequestMapping(&quot;/api/v1/recommendations&quot;)
+@Tag(name = &quot;recommendations&quot;, description = &quot;Content recommendation API&quot;)
+public class RecommendationController {
+
+    private final RecommendationService recommendationService;
+
+<span class="fc" id="L20">    public RecommendationController(RecommendationService recommendationService) {</span>
+<span class="fc" id="L21">        this.recommendationService = recommendationService;</span>
+<span class="fc" id="L22">    }</span>
+
+    @GetMapping(&quot;/next&quot;)
+    @Operation(summary = &quot;Get next recommended content for a user&quot;)
+    public ResponseEntity&lt;RecommendationService.ContentResponse&gt; getNextContent(
+            @Parameter(description = &quot;User ID&quot;) @RequestParam UUID userId) {
+        try {
+<span class="nc" id="L29">            RecommendationService.ContentResponse content = recommendationService.getNextContent(userId);</span>
+<span class="nc" id="L30">            return ResponseEntity.ok(content);</span>
+<span class="nc" id="L31">        } catch (RecommendationService.NoContentAvailableException e) {</span>
+<span class="nc" id="L32">            return ResponseEntity.noContent().build();</span>
+        }
+    }
+
+    @GetMapping
+    @Operation(summary = &quot;Get list of recommendations for a user&quot;)
+    public ResponseEntity&lt;?&gt; getRecommendations(
+            @Parameter(description = &quot;User ID&quot;) @RequestParam UUID userId,
+            @Parameter(description = &quot;Maximum number of recommendations&quot;) @RequestParam(defaultValue = &quot;10&quot;) int limit) {
+<span class="nc" id="L41">        return ResponseEntity.ok(recommendationService.getRecommendations(userId, limit));</span>
+    }
+
+    @PostMapping(&quot;/{contentId}/feedback&quot;)
+    @Operation(summary = &quot;Record feedback on a recommendation&quot;)
+    public ResponseEntity&lt;Void&gt; recordFeedback(
+            @Parameter(description = &quot;Content ID&quot;) @PathVariable String contentId,
+            @RequestBody @Valid FeedbackRequest request) {
+<span class="nc" id="L49">        recommendationService.recordFeedback(request.userId(), contentId, request.feedback());</span>
+<span class="nc" id="L50">        return ResponseEntity.accepted().build();</span>
+    }
+
+<span class="nc" id="L53">    public record FeedbackRequest(</span>
+        UUID userId,
+        RecommendationService.FeedbackType feedback
+    ) {}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

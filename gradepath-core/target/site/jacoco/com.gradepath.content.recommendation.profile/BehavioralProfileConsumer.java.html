@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BehavioralProfileConsumer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">content-service</a> &gt; <a href="index.source.html" class="el_package">com.gradepath.content.recommendation.profile</a> &gt; <span class="el_source">BehavioralProfileConsumer.java</span></div><h1>BehavioralProfileConsumer.java</h1><pre class="source lang-java linenums">package com.gradepath.content.recommendation.profile;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
+
+import java.time.Instant;
+
+/**
+ * Consumes behavioral profile updates from NestJS backend
+ * Listens on 'profile-updates' Kafka topic
+ */
+@Component
+<span class="fc" id="L17">@Slf4j</span>
+public class BehavioralProfileConsumer {
+
+    private final ObjectMapper objectMapper;
+    private final BehavioralProfileService profileService;
+
+    @Autowired
+    public BehavioralProfileConsumer(
+            ObjectMapper objectMapper,
+<span class="fc" id="L26">            BehavioralProfileService profileService) {</span>
+<span class="fc" id="L27">        this.objectMapper = objectMapper;</span>
+<span class="fc" id="L28">        this.profileService = profileService;</span>
+<span class="fc" id="L29">    }</span>
+
+    @KafkaListener(
+        topics = &quot;profile-updates&quot;,
+        groupId = &quot;behavioral-profile-consumer&quot;,
+        containerFactory = &quot;kafkaListenerContainerFactory&quot;
+    )
+    public void consumeProfileUpdate(String message) {
+        try {
+<span class="nc" id="L38">            log.debug(&quot;Received profile update from Kafka: {}&quot;, message);</span>
+
+<span class="nc" id="L40">            JsonNode json = objectMapper.readTree(message);</span>
+<span class="nc" id="L41">            JsonNode profileNode = json.get(&quot;profile&quot;);</span>
+
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            if (profileNode == null) {</span>
+<span class="nc" id="L44">                log.warn(&quot;No profile data in message: {}&quot;, message);</span>
+<span class="nc" id="L45">                return;</span>
+            }
+
+<span class="nc" id="L48">            BehavioralProfile profile = objectMapper.treeToValue(profileNode, BehavioralProfile.class);</span>
+
+            // Set userId from the message if not in profile
+<span class="nc bnc" id="L51" title="All 4 branches missed.">            if (profile.getUserId() == null &amp;&amp; json.has(&quot;userId&quot;)) {</span>
+<span class="nc" id="L52">                profile.setUserId(json.get(&quot;userId&quot;).asText());</span>
+            }
+
+            // Set timestamp from message if not in profile
+<span class="nc bnc" id="L56" title="All 4 branches missed.">            if (profile.getTimestamp() == null &amp;&amp; json.has(&quot;timestamp&quot;)) {</span>
+<span class="nc" id="L57">                profile.setTimestamp(objectMapper.treeToValue(json.get(&quot;timestamp&quot;), Instant.class));</span>
+            }
+
+<span class="nc" id="L60">            profileService.saveProfile(profile);</span>
+<span class="nc" id="L61">            log.info(&quot;Processed behavioral profile update for user: {}&quot;, profile.getUserId());</span>
+
+<span class="nc" id="L63">        } catch (Exception e) {</span>
+<span class="nc" id="L64">            log.error(&quot;Error processing profile update from Kafka: {}&quot;, message, e);</span>
+<span class="nc" id="L65">        }</span>
+<span class="nc" id="L66">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
