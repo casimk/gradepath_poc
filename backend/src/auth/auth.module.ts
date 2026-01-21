@@ -3,7 +3,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { ClientsModule, Transport } from '@nestjs/microservices';
+import { HttpModule } from '@nestjs/axios';
 
 import { SessionService } from './session.service';
 import { AuthService } from './auth.service';
@@ -36,16 +36,10 @@ const providers: any[] = [
       ttl: 60000,
       limit: 10,
     }]),
-    ClientsModule.register([
-      {
-        name: 'GRADPATH_CORE_SERVICE',
-        transport: Transport.TCP,
-        options: {
-          host: process.env.GRADEPATH_CORE_HOST || 'gradepath-core',
-          port: parseInt(process.env.GRADEPATH_CORE_PORT || '8081', 10),
-        },
-      },
-    ]),
+    HttpModule.register({
+      timeout: 30000,
+      maxRedirects: 5,
+    }),
   ],
   controllers: [AuthController],
   providers,

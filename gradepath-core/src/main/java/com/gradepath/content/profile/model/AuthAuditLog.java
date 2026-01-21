@@ -65,13 +65,13 @@ public class AuthAuditLog {
     @Column(name = "failure_reason", length = 255)
     private String failureReason;
 
-    @Column(name = "ip_address", columnDefinition = "inet")
+    @Column(name = "ip_address", length = 45)
     private String ipAddress;
 
     @Column(name = "user_agent", columnDefinition = "TEXT")
     private String userAgent;
 
-    @Column(name = "metadata", columnDefinition = "jsonb")
+    @Column(name = "metadata")
     private String metadata;
 
     @CreatedDate

@@ -41,7 +41,7 @@ public class AuthenticationService {
     @Value("${jwt.secret:gradepath-jwt-secret-key-change-in-production}")
     private String jwtSecret;
 
-    private final SecretKey signingKey;
+    private SecretKey signingKey;
 
     public AuthenticationService(
             UserRepository userRepository,
@@ -56,7 +56,13 @@ public class AuthenticationService {
         this.refreshTokenRepository = refreshTokenRepository;
         this.authAuditLogRepository = authAuditLogRepository;
         this.objectMapper = objectMapper;
-        this.signingKey = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+    }
+
+    private SecretKey getSigningKey() {
+        if (signingKey == null) {
+            signingKey = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+        }
+        return signingKey;
     }
 
     // ==================== Registration ====================
@@ -275,7 +281,7 @@ public class AuthenticationService {
                 .claim("displayName", user.getDisplayName())
                 .issuedAt(Date.from(now))
                 .expiration(Date.from(accessExpiry))
-                .signWith(signingKey)
+                .signWith(getSigningKey())
                 .compact();
 
         // Generate refresh token
@@ -331,6 +337,9 @@ public class AuthenticationService {
                     .authMethod(authMethod)
                     .success(success)
                     .failureReason(failureReason)
+                    .ipAddress(null)  // No IP capture in current implementation
+                    .userAgent(null)  // No user agent capture in current implementation
+                    .metadata("{}")   // Valid JSON for jsonb column
                     .occurredAt(Instant.now())
                     .build();
             authAuditLogRepository.save(auditLog);
