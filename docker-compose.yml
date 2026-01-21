@@ -26,6 +26,25 @@ services:
       retries: 3
       start_period: 40s
 
+  # NEW: GradePath Web application (React + Vite)
+  gradepath-web:
+    build:
+      context: .
+      dockerfile: ./web-app/Dockerfile
+    container_name: gradepath-web
+    hostname: gradepath-web
+    ports:
+      - "8083:80"
+    networks:
+      - telemetry-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
   # NEW: PostgreSQL for Spring Boot Gradepath Core service
   postgres:
     image: postgres:16-alpine

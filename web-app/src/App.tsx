@@ -3,6 +3,10 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 
+interface TelemetryMetadata {
+  [key: string]: unknown;
+}
+
 // Simple web-only telemetry implementation for testing
 const simpleTelemetryService = {
   sessionId: 'session-' + Date.now(),
@@ -14,7 +18,7 @@ const simpleTelemetryService = {
     console.log('[Telemetry] Initialized', { userId: this.userId, sessionId: this.sessionId });
   },
 
-  async trackEvent(eventType, metadata = {}) {
+  async trackEvent(eventType: string, metadata: TelemetryMetadata = {}) {
     if (!this.initialized) return;
 
     const event = {
